@@ -82,7 +82,7 @@ export default function Home() {
               <p className="mt-4 text-base sm:text-lg text-zinc-700 max-w-2xl">
                 We are a leadership community that empowers top university students to learn directly from CEOs, founders, and industry professionals, creating a platform for growth, collaboration, and meaningful impact.
               </p>
-              <a href="#find-out" className="mt-8 inline-flex h-12 sm:h-14 items-center justify-center rounded-md bg-white text-black px-6 text-lg font-semibold hover:bg-white/90 transition-colors">Find out more</a>
+              <a href="/our-people" className="mt-8 inline-flex h-12 sm:h-14 items-center justify-center rounded-md bg-white text-black px-6 text-lg font-semibold hover:bg-white/90 transition-colors">Find out more</a>
             </div>
           </div>
           <div className="bg-white min-h-[520px] sm:min-h-[680px] js-reveal relative overflow-hidden">

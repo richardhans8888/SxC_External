@@ -10,6 +10,7 @@ export type ProgramItem = {
   month: string;        // shown on homepage card button
   audience: string;     // who the program is for
   cover: string;        // homepage card background — place in public/programs/<slug>/cover.jpg
+  hero: string;
   images: string[];     // gallery images on detail page (can be empty [])
   excerpt: string;      // short summary for cards and detail hero
   content: string;      // full description — split on double newline into paragraphs
@@ -24,11 +25,10 @@ export const PROGRAMS: ProgramItem[] = [
     title: "Offline Event for High School Students",
     month: "April 24, 2025",
     audience: "High School Students",
-    cover: "/programs/school-of-ideas/cover.jpg",
+    cover: "/programs/school-of-ideas/cover.jpeg",
+    hero: "/programs/school-of-ideas/hero3.jpeg",
     images: [
-      "/programs/school-of-ideas/gallery-1.jpg",
-      "/programs/school-of-ideas/gallery-2.jpg",
-      "/programs/school-of-ideas/gallery-3.jpg",
+      
     ],
     excerpt:
       "Offline event for high school students to explore their potential through personality tests and grow into future leaders with engaging talk shows and workshops.",
@@ -51,19 +51,19 @@ highlights: [
 ],
   },
   {
-    slug: "sxcareer",
+    slug: "SxCareer",
     badge: "SxCareer",
     category: "CAREER DEVELOPMENT",
     title: "Career Preparation Webinar",
-    month: "April",
-    audience: "Active Students & Fresh Graduates",
-    cover: "/programs/sxcareer/cover.jpg",
+    month: "April 2025",
+    audience: "Active students & fresh graduates",
+    cover: "/programs/sxcareer/cover.jpeg",
+    hero: "/programs/sxcareer/hero1.jpeg",
     images: [
-      "/programs/sxcareer/gallery-1.jpg",
-      "/programs/sxcareer/gallery-2.jpg",
+      
     ],
     excerpt:
-      "A focused webinar series covering the six most competitive career tracks — Consulting, Banking, FMCG, Media, Technology, and Startup — plus strategic goal-setting sessions to help you land where you want to be.",
+      "Career preparation webinar focused on 5 industry, Consulting, Banking, FMCG, Media, Technology, StartUp and impactful goal-setting sessions to empower future leaders.",
     content: `SxCareer is built for students and fresh graduates who are serious about their career direction and want real, specific guidance — not generic advice. The program runs as a series of focused webinars, each dedicated to a different industry track.
 
 The six tracks covered are Consulting, Banking, FMCG, Media, Technology, and Startup. Each session features practitioners from that industry who share what the recruitment process actually looks like, what skills hiring managers prioritize, and what separates candidates who get offers from those who don't.
@@ -84,17 +84,15 @@ SxCareer is intentionally practical. Every session is structured around actionab
     badge: "SxCelerate",
     category: "BOOTCAMP",
     title: "Two-Month Intensive Bootcamp",
-    month: "May",
+    month: "May 2025",
     audience: "Active Students",
-    cover: "/programs/sxcelerate/cover.jpg",
+    cover: "/programs/sxcelerate/cover.jpeg",
+    hero: "/programs/sxcelerate/hero.jpeg",
     images: [
-      "/programs/sxcelerate/gallery-1.jpg",
-      "/programs/sxcelerate/gallery-2.jpg",
-      "/programs/sxcelerate/gallery-3.jpg",
-      "/programs/sxcelerate/gallery-4.jpg",
+      
     ],
     excerpt:
-      "The most intensive program in the StudentsxCEOs Jakarta lineup — a two-month bootcamp combining forums, mentoring, company visits, case competitions, and a real client project.",
+      "Bootcamp program for outstanding students in 2 months consisting of Forum, Mentoring, Company Visit, Case Competition, and Client Project.",
     content: `SxCelerate is where theory meets practice at full speed. Over two months, selected university students go through a structured program designed to compress years of professional development into an intensive, high-accountability experience.
 
 The program is built around five core components. Forums bring participants together for structured learning sessions on leadership, strategy, and professional skills — facilitated by industry practitioners and SxC Jakarta alumni. Mentoring pairs each participant with a professional mentor who provides personalized guidance throughout the program.
@@ -117,16 +115,15 @@ Participants who complete SxCelerate consistently describe it as a transformativ
     badge: "Meet the Series",
     category: "OFFLINE EVENT SERIES",
     title: "Big Offline Event Series",
-    month: "July",
-    audience: "All Future Leaders",
-    cover: "/programs/meet-the-series/cover.jpg",
+    month: "August 2, 2025",
+    audience: "Open Public",
+    cover: "/programs/meet-the-series/cover.jpeg",
+    hero: "/programs/meet-the-series/hero3.jpeg",
     images: [
-      "/programs/meet-the-series/gallery-1.jpg",
-      "/programs/meet-the-series/gallery-2.jpg",
-      "/programs/meet-the-series/gallery-3.jpg",
+      
     ],
     excerpt:
-      "Three flagship offline events in one series — Meet The CEO, Meet The Expert, and Meet Yourself — each designed to give you a different lens on leadership, career, and self.",
+      "Big offline event, consist of Meet The CEO, Meet The Expert, and Meet Yourself that focuses on career insights, professional skills training, and business leader perspectives.",
     content: `The Meet the Series is StudentsxCEOs Jakarta's largest offline event series of the year, bringing together hundreds of students, young professionals, and industry leaders across three distinct events — each with its own focus, format, and energy.
 
 Meet The CEO is an intimate conversation series with some of Indonesia's most influential business leaders. Unlike conventional keynote formats, Meet The CEO is designed for dialogue — small group settings, honest Q&A, and the kind of access that is rarely available to students outside of programs like this.
@@ -149,16 +146,15 @@ Together, the three events create a complete leadership development experience t
     badge: "SxConference",
     category: "ANNUAL CONFERENCE",
     title: "Dynamic Leadership Conference",
-    month: "August",
+    month: "October 11, 2025",
     audience: "Alumni, External, Internal SxC Jakarta",
-    cover: "/programs/sxconference/cover.jpg",
+    cover: "/programs/sxconference/cover.jpeg",
+    hero: "/programs/sxconference/hero.jpeg",
     images: [
-      "/programs/sxconference/gallery-1.jpg",
-      "/programs/sxconference/gallery-2.jpg",
-      "/programs/sxconference/gallery-3.jpg",
+      
     ],
     excerpt:
-      "The annual flagship conference that unites the full StudentsxCEOs Jakarta community — alumni, young professionals, and industry leaders — for a day of insightful talk shows and bold discussions on the future of leadership.",
+      "A dynamic program that unites SxC alumni, young professionals, and industry leaders for insightful talk shows and engaging discussions, fostering collaboration, growth, and impactful change.",
     content: `SxConference is the culminating event of the StudentsxCEOs Jakarta annual calendar — a full-day conference that brings together the entire SxC community alongside external guests for the most ambitious, wide-ranging conversation of the year.
 
 The conference is structured around a central theme that shifts each year, reflecting the most pressing questions in leadership, industry, and society. Past themes have explored topics including leadership in uncertainty, the future of work, and the role of young Indonesians in shaping the nation's next chapter.

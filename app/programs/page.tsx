@@ -27,11 +27,20 @@ export default function ProgramsPage() {
               {/* Image Section */}
               <div className="w-full lg:w-1/2">
                 <div className="aspect-[16/9] bg-neutral-100 overflow-hidden relative group rounded-lg">
+                  {/* Blurred background fill — fills empty sides with a soft version of the same image */}
                   <Image
-                    src={program.cover}
+                    src={program.hero}
+                    alt=""
+                    fill
+                    aria-hidden="true"
+                    className="object-cover scale-110 blur-xl opacity-60"
+                  />
+                  {/* Sharp foreground image — contained so the full poster is always visible */}
+                  <Image
+                    src={program.hero}
                     alt={program.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-contain transition-transform duration-700 group-hover:scale-105 z-10"
                   />
                 </div>
               </div>

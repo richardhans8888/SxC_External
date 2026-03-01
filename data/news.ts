@@ -9,6 +9,7 @@ export type NewsItem = {
   date: string;
   author?: string;
   cover: string;           // shown on homepage card
+  hero: string;
   images: string[];        // gallery images on detail page (can be empty [])
   excerpt: string;         // short summary shown on cards / detail hero
   content: string;         // full article — supports basic HTML tags like <b>, <i>, <br/>
@@ -21,7 +22,8 @@ export const NEWS: NewsItem[] = [
     title: "StudentsxCEOs Jakarta Batch 14 Officially Kicks Off with Onboarding Session",
     date: "February 28, 2026",
     author: "Data and Technology Division",
-    cover: "/news/holiday-shopping-2025/cover.jpg",
+    cover: "/news/onboarding-session/cover.jpeg",
+    hero: "/news/onboarding-session/hero.jpeg",
     images: [
       "/news/holiday-shopping-2025/gallery-1.jpg",
       "/news/holiday-shopping-2025/gallery-2.jpg",
@@ -49,7 +51,8 @@ Overall, the onboarding session served as a meaningful starting point for Studen
     title: "Apprentices of SxC Jakarta Kick Off Leadership Initiative with Insightful Webinar",
     date: "February 28, 2026",
     author: "Data and Technology Division",
-    cover: "/news/holiday-shopping-2025/cover.jpg",
+    cover: "/news/leadership-initiative/cover.jpeg",
+    hero: "/news/leadership-initiative/hero.jpeg", 
     images: [
       "/news/holiday-shopping-2025/gallery-1.jpg",
       "/news/holiday-shopping-2025/gallery-2.jpg",
@@ -84,7 +87,8 @@ As the first initiative under the Leadership value, LeadYourShip sets the tone f
     title: "SxC Jakarta Empowers Aspiring Entrepreneurs to Build Sustainable Ventures with Preneuries",
     date: "February 28, 2026",
     author: "Data and Technology Division",
-    cover: "/news/holiday-shopping-2025/cover.jpg",
+    cover: "/news/preneuries/cover.jpeg",
+    hero: "/news/preneuries/hero.jpeg", 
     images: [
       "/news/holiday-shopping-2025/gallery-1.jpg",
       "/news/holiday-shopping-2025/gallery-2.jpg",
@@ -112,7 +116,8 @@ As the second initiative under SxC Jakarta’s core values framework, Preneuries
     title: "SxC Jakarta Connects Students with Digital Industry Professionals Through SxDigital",
     date: "February 28, 2026",
     author: "Data and Technology Division",
-    cover: "/news/holiday-shopping-2025/cover.jpg",
+    cover: "/news/sxdigital/cover.jpeg",
+    hero: "/news/sxdigital/hero.jpeg", 
     images: [
       "/news/holiday-shopping-2025/gallery-1.jpg",
       "/news/holiday-shopping-2025/gallery-2.jpg",

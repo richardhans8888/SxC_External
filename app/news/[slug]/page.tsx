@@ -34,7 +34,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
         {/* Layer 1: Blurred background fill */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={item.cover}
+            src={item.hero}
             alt=""
             fill
             aria-hidden="true"
@@ -46,7 +46,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
         <div className="relative h-full w-full flex items-center justify-center z-10 px-4">
           <div className="relative h-full w-full max-w-5xl">
             <Image
-              src={item.cover}
+              src={item.hero}
               alt={item.title}
               fill
               priority

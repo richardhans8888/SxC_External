@@ -22,7 +22,7 @@ export const PROGRAMS: ProgramItem[] = [
     badge: "School of Ideas",
     category: "HIGH SCHOOL PROGRAM",
     title: "Offline Event for High School Students",
-    month: "April",
+    month: "April 24, 2025",
     audience: "High School Students",
     cover: "/programs/school-of-ideas/cover.jpg",
     images: [
@@ -31,23 +31,24 @@ export const PROGRAMS: ProgramItem[] = [
       "/programs/school-of-ideas/gallery-3.jpg",
     ],
     excerpt:
-      "An immersive offline experience designed to help high school students discover their potential, develop their identity as future leaders, and get a head start on their journey.",
-    content: `School of Ideas is StudentsxCEOs Jakarta's flagship program for high school students — a full-day offline event that combines personality exploration, inspirational talk shows, and hands-on workshops to unlock the leadership potential that already exists in every participant.
+      "Offline event for high school students to explore their potential through personality tests and grow into future leaders with engaging talk shows and workshops.",
+    content: `School of Ideas 2025 brought together high school students across Jakarta for a day of discovery, inspiration, and skill-building under the theme "Career Quest: Unlock Your Future." Held on Thursday, April 24th, 2025 at SMA Labschool Cibubur, the event ran from 16.00 to 18.00 WIB.
 
-Through personality assessments and guided self-discovery sessions, students gain a clearer picture of their strengths, communication styles, and natural leadership tendencies. This isn't about fitting into a mold — it's about understanding who you already are and building on it.
+The centerpiece of the event was a talkshow titled "The Rise of AI: How Artificial Intelligence Will Shape Your Future" — a timely and eye-opening discussion designed to help students understand how AI is already reshaping careers and what they can do to stay ahead.
 
-The talk show segment brings in CEOs, founders, and industry professionals who share their real stories — the failures, the pivots, the moments that defined their paths. These conversations are designed to be honest, not polished, giving students a realistic and inspiring view of what leadership actually looks like.
+The event featured three outstanding speakers. Navira Putri Apriliani, Partnership and Strategy Lead at Eduquip Education, Management Consultant at a Consulting Firm, and Best Undergraduate Student of FEB UI 2023. Ahmad Dipa, Education Content Creator on TikTok with 34K+ followers, Former President of ISAFIS 2024, and Top 10 Finalist at the prestigious Bank Indonesia Digital Content Competition 2024. Falah Andhesryo, Top Student of Ruangguru Clash of Champions 2024 and Gold Medalist at both Olimpiade Sains Indonesia HARDIKNAS Bidang Informatika 2022 and Olimpiade Sains Nasional Global Youth Action Bidang Ilmu Komputer 2021.
 
-Workshops are hands-on and collaborative, focused on practical skills like public speaking, creative problem-solving, and working effectively in teams. Students leave with more than knowledge — they leave with confidence, connections, and a sense of direction.
+Participants gained real insider knowledge straight from the pros, access to exclusive BPC/BCC coaching sessions, and the chance to compete for a total prize pool of IDR 50 million. The event also provided elite networking access — connecting students with peers, mentors, and professionals who share the same drive to grow.
 
-School of Ideas is free to attend and open to high school students across Jakarta. It is one of the most anticipated events in the StudentsxCEOs Jakarta annual calendar.`,
-    highlights: [
-      "Personality assessments & self-discovery",
-      "Live talk show with CEOs & founders",
-      "Hands-on leadership workshops",
-      "Free to attend",
-      "Open to all Jakarta high school students",
-    ],
+School of Ideas 2025 has officially concluded. We thank every student who attended, every speaker who shared their story, and our partners Eduquip and Cakak for making it possible. Stay connected with StudentsxCEOs Jakarta for future editions and upcoming programs.`,
+
+highlights: [
+  "Gained real insider hacks straight from the pros",
+  "Exclusive BPC/BCC coaching session",
+  "Total prize pool of IDR 50 million",
+  "Elite networking access",
+  "Leveled up confidence, skills, and mindset",
+],
   },
   {
     slug: "sxcareer",

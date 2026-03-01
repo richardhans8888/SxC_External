@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
-import { PROGRAMS } from "../data/programs";
+import { PROGRAMS } from "../../data/programs";
 
 export const metadata: Metadata = {
   title: "Our Programs | StudentsxCEOs Jakarta",

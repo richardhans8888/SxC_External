@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { NEWS } from "../../data/news";
+import { NEWS } from "../../../data/news";
 import NewsGallery from "../../../components/NewsGallery";
 
 export function generateStaticParams() {

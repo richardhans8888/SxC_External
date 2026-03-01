@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollGradient from "../components/ScrollGradient";
 import ScrollReveal from "../components/ScrollReveal";
-import { NEWS } from "./data/news";
-import { PROGRAMS } from "./data/programs";
+import { NEWS } from "../data/news";
+import { PROGRAMS } from "../data/programs";
 
 // ============================================================
 // Page Content Section

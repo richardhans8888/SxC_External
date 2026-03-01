@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NEWS } from "../../data/news";
+import NewsGallery from "../../../components/NewsGallery";
 
-// ── Static params for Next.js to pre-render all news pages ──────────────────
 export function generateStaticParams() {
   return NEWS.map((item) => ({ slug: item.slug }));
 }
 
-// ── Meta ─────────────────────────────────────────────────────────────────────
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const item = NEWS.find((n) => n.slug === slug);
@@ -19,7 +18,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-// ── Page ─────────────────────────────────────────────────────────────────────
 export default async function NewsDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const item = NEWS.find((n) => n.slug === slug);
@@ -31,7 +29,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
   return (
     <main className="relative w-full bg-white text-zinc-900 overflow-hidden">
 
-      {/* ── Hero — full-bleed cover image with overlay ───────────────────── */}
+      {/* Hero cover image */}
       <section className="relative w-full h-[55vh] sm:h-[65vh] overflow-hidden">
         <Image
           src={item.cover}
@@ -40,11 +38,10 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
           priority
           className="object-cover"
         />
-        {/* Gradient: transparent top → white bottom so it bleeds into the page */}
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
       </section>
 
-      {/* ── Header block — sits just below the hero image ────────────────── */}
+      {/* Header block below the hero image */}
       <section className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10 -mt-24 sm:-mt-32 pb-0">
         {/* Back link */}
         <Link
@@ -84,7 +81,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
         <div className="mt-8 h-px w-full bg-zinc-200" />
       </section>
 
-      {/* ── Body ─────────────────────────────────────────────────────────── */}
+      {/* Body */}
       <section className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
@@ -111,29 +108,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
             </div>
 
             {/* Gallery — only rendered if images array has entries */}
-            {item.images.length > 0 && (
-              <div className="mt-14">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-1 w-10 bg-blue-600" />
-                  <span className="text-xs font-semibold tracking-widest text-zinc-400 uppercase">Gallery</span>
-                </div>
-                <div className={`grid gap-4 ${item.images.length === 1 ? "grid-cols-1" : item.images.length === 2 ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-3"}`}>
-                  {item.images.map((src, i) => (
-                    <div
-                      key={i}
-                      className={`relative overflow-hidden rounded-lg bg-zinc-100 ${i === 0 && item.images.length >= 3 ? "col-span-2 aspect-[16/9]" : "aspect-[4/3]"}`}
-                    >
-                      <Image
-                        src={src}
-                        alt={`${item.title} — image ${i + 1}`}
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+            <NewsGallery images={item.images} title={item.title} />
           </div>
 
           {/* Right sidebar */}
@@ -183,7 +158,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
         </div>
       </section>
 
-      {/* ── Related Articles ─────────────────────────────────────────────── */}
+      {/* Related Articles */}
       {related.length > 0 && (
         <section className="relative z-10 w-full bg-zinc-50 border-t border-zinc-200 py-14 sm:py-20">
           <div className="mx-auto max-w-5xl px-6 sm:px-10">
@@ -227,7 +202,7 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
         </section>
       )}
 
-      {/* ── Back to home CTA ─────────────────────────────────────────────── */}
+      {/* Back to home CTA */}
       <section className="relative z-10 w-full bg-white border-t border-zinc-200 py-14 sm:py-20 flex flex-col items-center text-center px-6">
         <div className="h-1 w-16 bg-blue-600 mb-6" />
         <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 mb-4">Stay in the loop</h2>

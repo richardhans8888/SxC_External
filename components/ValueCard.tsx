@@ -1,20 +1,15 @@
 // ValueCard.tsx — Reusable "template" component (OOP-style)
-// Think of this as a "class" with defined properties (props interface = schema)
-// Each card is an "instance" created with different data
+import Image, { StaticImageData } from "next/image";
 
-import Image from "next/image";
-
-// --- TYPE DEFINITION (like a class schema / interface) ---
 export interface ValueCardProps {
-  index: number;           // Display number (e.g. 01, 02...)
-  title: string[];         // Title split into lines, e.g. ["Individual", "and Team"]
+  index: number;
+  title: string[];
   description: string;
-  imageSrc: string;        // Path to image
+  imageSrc: string | StaticImageData; // ← accepts both string paths AND imported images
   imageAlt: string;
-  accent?: string;         // Optional accent color class (default: blue-600)
+  accent?: string;
 }
 
-// --- COMPONENT (the "class" / template) ---
 export function ValueCard({
   index,
   title,
@@ -27,7 +22,6 @@ export function ValueCard({
 
   return (
     <article className="group flex flex-col gap-0 overflow-hidden rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-500 bg-white">
-      {/* Image Block */}
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100">
         <Image
           src={imageSrc}
@@ -36,13 +30,11 @@ export function ValueCard({
           className="object-cover transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
-        {/* Index Badge */}
         <div className={`absolute top-4 left-4 ${accent} text-white text-xs font-bold px-2 py-1 tracking-widest`}>
           {indexStr}
         </div>
       </div>
 
-      {/* Text Block */}
       <div className="p-8 flex flex-col gap-4 flex-1">
         <h3 className="text-2xl font-bold uppercase leading-tight tracking-tight text-zinc-900">
           {title.map((line, i) => (

@@ -159,14 +159,14 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
       </section>
 
       {/* Related Articles */}
-      {related.length > 0 && (
-        <section className="relative z-10 w-full bg-zinc-50 border-t border-zinc-200 py-14 sm:py-20">
-          <div className="mx-auto max-w-5xl px-6 sm:px-10">
-            <div className="flex items-center gap-4 mb-10">
-              <div className="h-1 w-10 bg-blue-600" />
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900">More Articles</h2>
-            </div>
+      <section className="relative z-10 w-full bg-zinc-50 border-t border-zinc-200 py-14 sm:py-20">
+        <div className="mx-auto max-w-5xl px-6 sm:px-10">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-1 w-10 bg-blue-600" />
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900">More Articles</h2>
+          </div>
 
+          {related.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
               {related.map((rel) => (
                 <Link
@@ -198,9 +198,20 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
                 </Link>
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          ) : (
+            /* Fallback when there are no other articles yet */
+            <div className="flex flex-col items-center text-center py-10 border border-dashed border-zinc-300 rounded-xl">
+              <div className="h-1 w-12 bg-blue-600 mb-6" />
+              <p className="text-lg sm:text-xl font-semibold text-zinc-700 max-w-md">
+                Stay tuned for more news from StudentsxCEOs Jakarta!
+              </p>
+              <p className="mt-3 text-sm text-zinc-400 max-w-sm">
+                We&apos;re always working on something new. Check back soon for more updates, recaps, and stories.
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* Back to home CTA */}
       <section className="relative z-10 w-full bg-white border-t border-zinc-200 py-14 sm:py-20 flex flex-col items-center text-center px-6">

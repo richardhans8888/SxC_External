@@ -29,20 +29,50 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
   return (
     <main className="relative w-full bg-white text-zinc-900 overflow-hidden">
 
-      {/* Hero cover image */}
-      <section className="relative w-full h-[55vh] sm:h-[65vh] overflow-hidden">
-        <Image
-          src={item.cover}
-          alt={item.title}
-          fill
-          priority
-          className="object-cover"
+      {/* Hero section with 16:9 Aspect Ratio - Matched to Program Detail */}
+      <section className="relative w-full aspect-video max-h-[75vh] overflow-hidden bg-white">
+        {/* Layer 1: Blurred background fill */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={item.cover}
+            alt=""
+            fill
+            aria-hidden="true"
+            className="object-cover scale-110 blur-2xl opacity-50"
+          />
+        </div>
+
+        {/* Layer 2: Sharp foreground image */}
+        <div className="relative h-full w-full flex items-center justify-center z-10 px-4">
+          <div className="relative h-full w-full max-w-5xl">
+            <Image
+              src={item.cover}
+              alt={item.title}
+              fill
+              priority
+              className="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Layer 3: Clean edge fades */}
+        <div 
+          className="absolute bottom-0 left-0 right-0 h-24 z-20 pointer-events-none"
+          style={{ background: "linear-gradient(to top, white 0%, rgba(255,255,255,0.6) 30%, transparent 100%)" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
+        
+        <div 
+          className="absolute inset-y-0 left-0 w-12 z-20 pointer-events-none hidden sm:block"
+          style={{ background: "linear-gradient(to right, white, transparent)" }}
+        />
+        <div 
+          className="absolute inset-y-0 right-0 w-12 z-20 pointer-events-none hidden sm:block"
+          style={{ background: "linear-gradient(to left, white, transparent)" }}
+        />
       </section>
 
-      {/* Header block below the hero image */}
-      <section className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10 -mt-24 sm:-mt-32 pb-0">
+      {/* Header block — cleanly on white, no overlap with the image */}
+      <section className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10 pt-6 pb-0">
         {/* Back link */}
         <Link
           href="/"
@@ -174,18 +204,14 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
                   href={`/news/${rel.slug}`}
                   className="group relative h-[300px] overflow-hidden rounded-xl bg-zinc-200"
                 >
-                  {/* Cover image */}
                   <Image
                     src={rel.cover}
                     alt={rel.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  {/* Gradient overlay for text legibility */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  {/* Blue accent line on hover */}
                   <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 group-hover:w-full transition-all duration-500" />
-                  {/* Content */}
                   <div className="absolute inset-0 p-5 flex flex-col justify-end">
                     <span className="text-xs font-semibold tracking-widest text-blue-300 uppercase mb-2">
                       {rel.category}
@@ -199,7 +225,6 @@ export default async function NewsDetail({ params }: { params: Promise<{ slug: s
               ))}
             </div>
           ) : (
-            /* Fallback when there are no other articles yet */
             <div className="flex flex-col items-center text-center py-10 border border-dashed border-zinc-300 rounded-xl">
               <div className="h-1 w-12 bg-blue-600 mb-6" />
               <p className="text-lg sm:text-xl font-semibold text-zinc-700 max-w-md">

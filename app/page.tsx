@@ -1,125 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import ScrollGradient from "../components/ScrollGradient";
 import ScrollReveal from "../components/ScrollReveal";
+import { NEWS } from "./data/news";
+import { PROGRAMS } from "./data/programs";
 
 // ============================================================
 // Page Content Section
 // ============================================================
-
-const PROGRAMS = [
-  {
-    badge: "School of Ideas",
-    image: "/programs/school-of-ideas.jpg", // ← place image in public/programs/
-    title: "Offline event for high school students",
-    description:
-      "Explore potential through personality tests and grow into future leaders with engaging talk shows and workshops.",
-    month: "April",
-    audience: "High School Students",
-  },
-  {
-    badge: "SxCareer",
-    image: "/programs/sxcareer.jpg",
-    title: "Career preparation webinar",
-    description:
-      "Focused on Consulting, Banking, FMCG, Media, Technology, and Startup plus impactful goal-setting sessions to empower future leaders.",
-    month: "April",
-    audience: "Active Students & Fresh Graduates",
-  },
-  {
-    badge: "SxCelerate",
-    image: "/programs/sxcelerate.jpg",
-    title: "Bootcamp program",
-    description:
-      "Two-month program including Forum, Mentoring, Company Visit, Case Competition, and Client Project.",
-    month: "May",
-    audience: "Active Students",
-  },
-  {
-    badge: "Meet the Series",
-    image: "/programs/meet-the-series.jpg",
-    title: "Big offline event series",
-    description:
-      "Meet The CEO, Meet The Expert, and Meet Yourself — career insights, skills training, and leader perspectives.",
-    month: "July",
-    audience: "All Future Leaders",
-  },
-  {
-    badge: "SxConference2",
-    image: "/programs/sxconference.jpg",
-    title: "Dynamic leadership program",
-    description:
-      "Unites alumni, young professionals, and industry leaders for insightful talk shows and engaging discussions.",
-    month: "August",
-    audience: "Alumni, External, Internal SxC Jakarta",
-  },
-  {
-    badge: "SxConference",
-    image: "/programs/sxconference.jpg",
-    title: "Dynamic leadership program",
-    description:
-      "Unites alumni, young professionals, and industry leaders for insightful talk shows and engaging discussions.",
-    month: "August",
-    audience: "Alumni, External, Internal SxC Jakarta",
-  },
-  
-];
-
-const NEWS = [
-  {
-    category: "RESEARCH REPORT",
-    title: "Holiday shopping 2025",
-    image: "/news/holiday-shopping-2025.jpg", // ← place image in public/news/
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Growth in the age of AI",
-    image: "/news/growth-age-of-ai.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Destination net zero 2025",
-    image: "/news/destination-net-zero.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Accelerating human‑AI collaboration",
-    image: "/news/human-ai-collaboration.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "AI and your operating model",
-    image: "/news/ai-operating-model.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Sovereign AI: managing risk to growth",
-    image: "/news/sovereign-ai.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Strengthen your cyber defenses",
-    image: "/news/cyber-defenses.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Reimagining public services",
-    image: "/news/public-services.jpg",
-    href: "#",
-  },
-  {
-    category: "RESEARCH REPORT",
-    title: "Reimagining public services",
-    image: "/news/public-services.jpg",
-    href: "#",
-  },
-];
 
 const COMPANY_LOGOS = [
   { src: "/Company_1.png", alt: "Company 1" },
@@ -234,13 +122,13 @@ export default function Home() {
         </div>
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
           {PROGRAMS.map((program) => (
-            <div key={program.badge} className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
+            <Link key={program.slug} href={`/programs/${program.slug}`} className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
               {/* Card background image — sourced from the image field on the content part */}
               <Image
-                src={program.image}
+                src={program.cover}
                 alt={program.title}
                 fill
-                className="object-cover opacity-35"
+                className="object-cover opacity-35 group-hover:opacity-50 transition-opacity duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
               <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold whitespace-nowrap">
@@ -248,13 +136,13 @@ export default function Home() {
               </div>
               <div className="absolute inset-0 p-5 flex flex-col justify-end">
                 <h4 className="text-lg font-semibold">{program.title}</h4>
-                <p className="mt-2 text-sm text-white/80">{program.description}</p>
+                <p className="mt-2 text-sm text-white/80">{program.excerpt}</p>
                 <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">
                   {program.month}
                 </div>
                 <p className="mt-3 text-xs text-white/70">{program.audience}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -301,21 +189,21 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900">Our Latest News</h2>
           </div>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {NEWS.map((item, i) => (
-              <a key={i} href={item.href} className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
+            {NEWS.map((item) => (
+              <Link key={item.slug} href={`/news/${item.slug}`} className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
                 {/* Card background image — sourced from the image field on the content part */}
                 <Image
-                  src={item.image}
+                  src={item.cover}
                   alt={item.title}
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors" />
                 <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
                   <span className="text-xs font-semibold tracking-wider text-white/80">{item.category}</span>
                   <h4 className="mt-2 text-lg sm:text-xl font-semibold text-white">{item.title}</h4>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

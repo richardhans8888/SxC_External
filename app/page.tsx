@@ -1,6 +1,84 @@
 import ScrollGradient from "../components/ScrollGradient";
 import ScrollReveal from "../components/ScrollReveal";
 
+// Page Content
+
+const PROGRAMS = [
+  {
+    badge: "School of Ideas",
+    title: "Offline event for high school students",
+    description:
+      "Explore potential through personality tests and grow into future leaders with engaging talk shows and workshops.",
+    month: "April",
+    audience: "High School Students",
+  },
+  {
+    badge: "SxCareer",
+    title: "Career preparation webinar",
+    description:
+      "Focused on Consulting, Banking, FMCG, Media, Technology, and Startup plus impactful goal-setting sessions to empower future leaders.",
+    month: "April",
+    audience: "Active Students & Fresh Graduates",
+  },
+  {
+    badge: "SxCelerate",
+    title: "Bootcamp program",
+    description:
+      "Two-month program including Forum, Mentoring, Company Visit, Case Competition, and Client Project.",
+    month: "May",
+    audience: "Active Students",
+  },
+  {
+    badge: "Meet the Series",
+    title: "Big offline event series",
+    description:
+      "Meet The CEO, Meet The Expert, and Meet Yourself — career insights, skills training, and leader perspectives.",
+    month: "July",
+    audience: "All Future Leaders",
+  },
+  {
+    badge: "SxConference",
+    title: "Dynamic leadership program",
+    description:
+      "Unites alumni, young professionals, and industry leaders for insightful talk shows and engaging discussions.",
+    month: "August",
+    audience: "Alumni, External, Internal SxC Jakarta",
+  },
+];
+
+const NEWS = [
+  { category: "RESEARCH REPORT", title: "Holiday shopping 2025", href: "#" },
+  { category: "RESEARCH REPORT", title: "Growth in the age of AI", href: "#" },
+  { category: "RESEARCH REPORT", title: "Destination net zero 2025", href: "#" },
+  { category: "RESEARCH REPORT", title: "Accelerating human‑AI collaboration", href: "#" },
+  { category: "RESEARCH REPORT", title: "AI and your operating model", href: "#" },
+  { category: "RESEARCH REPORT", title: "Sovereign AI: managing risk to growth", href: "#" },
+  { category: "RESEARCH REPORT", title: "Strengthen your cyber defenses", href: "#" },
+  { category: "RESEARCH REPORT", title: "Reimagining public services", href: "#" },
+];
+
+const COMPANY_LOGOS = [
+  { src: "/Company_1.png", alt: "Company 1" },
+  { src: "/Company_2.png", alt: "Company 2" },
+  { src: "/Company_3.png", alt: "Company 3" },
+  { src: "/Company_4.png", alt: "Company 4" },
+  { src: "/Company_5.jpg", alt: "Company 5" },
+  { src: "/Company_6.png", alt: "Company 6" },
+  { src: "/Company_7.png", alt: "Company 7" },
+  { src: "/Company_8.png", alt: "Company 8" },
+];
+
+const MEDIA_LOGOS = [
+  { src: "/MC_1.webp", alt: "Media & Community 1" },
+  { src: "/MC_2.png", alt: "Media & Community 2" },
+  { src: "/MC_3.png", alt: "Media & Community 3" },
+  { src: "/MC_4.jpeg", alt: "Media & Community 4" },
+  { src: "/MC_5.png", alt: "Media & Community 5" },
+  { src: "/MC_6.jpg", alt: "Media & Community 6" },
+];
+
+// Page Design
+
 export default function Home() {
   return (
     <main className="relative min-h-[50vh] w-full bg-black text-white overflow-hidden">
@@ -65,6 +143,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Programs Section */}
       <section className="relative z-20 mx-auto max-w-screen-2xl px-6 sm:px-8 py-14 sm:py-20">
         <div className="absolute inset-0 z-0 hero-blur-bg">
           <div className="blob b1" />
@@ -81,64 +161,24 @@ export default function Home() {
             from short events to dedicated training and scholarship opportunities.
           </p>
         </div>
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
-          <div className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
-            <div className="absolute inset-0 bg-[url('/api/pics/logo.webp')] bg-cover bg-center opacity-35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold">School of Ideas</div>
-            <div className="absolute inset-0 p-5 flex flex-col justify-end">
-              <h4 className="text-lg font-semibold">Offline event for high school students</h4>
-              <p className="mt-2 text-sm text-white/80">Explore potential through personality tests and grow into future leaders with engaging talk shows and workshops.</p>
-              <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">April</div>
-              <p className="mt-3 text-xs text-white/70">High School Students</p>
-          </div>
-          </div>
-          <div className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
-            <div className="absolute inset-0 bg-[url('/api/pics/logo.webp')] bg-cover bg-center opacity-35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold">SxCareer</div>
-            <div className="absolute inset-0 p-5 flex flex-col justify-end">
-              <h4 className="text-lg font-semibold">Career preparation webinar</h4>
-              <p className="mt-2 text-sm text-white/80">Focused on Consulting, Banking, FMCG, Media, Technology, and Startup plus impactful goal-setting sessions to empower future leaders.</p>
-              <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">April</div>
-              <p className="mt-3 text-xs text-white/70">Active Students &amp; Fresh Graduates</p>
-          </div>
-          </div>
-          <div className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
-            <div className="absolute inset-0 bg-[url('/api/pics/logo.webp')] bg-cover bg-center opacity-35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold">SxCelerate</div>
-            <div className="absolute inset-0 p-5 flex flex-col justify-end">
-              <h4 className="text-lg font-semibold">Bootcamp program</h4>
-              <p className="mt-2 text-sm text-white/80">Two-month program including Forum, Mentoring, Company Visit, Case Competition, and Client Project.</p>
-              <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">May</div>
-              <p className="mt-3 text-xs text-white/70">Active Students</p>
-          </div>
-          </div>
-          <div className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
-            <div className="absolute inset-0 bg-[url('/api/pics/logo.webp')] bg-cover bg-center opacity-35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold">Meet the Series</div>
-            <div className="absolute inset-0 p-5 flex flex-col justify-end">
-              <h4 className="text-lg font-semibold">Big offline event series</h4>
-              <p className="mt-2 text-sm text-white/80">Meet The CEO, Meet The Expert, and Meet Yourself — career insights, skills training, and leader perspectives.</p>
-              <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">July</div>
-              <p className="mt-3 text-xs text-white/70">All Future Leaders</p>
-          </div>
-          </div>
-          <div className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
-            <div className="absolute inset-0 bg-[url('/api/pics/logo.webp')] bg-cover bg-center opacity-35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold">SxConference</div>
-            <div className="absolute inset-0 p-5 flex flex-col justify-end">
-              <h4 className="text-lg font-semibold">Dynamic leadership program</h4>
-              <p className="mt-2 text-sm text-white/80">Unites alumni, young professionals, and industry leaders for insightful talk shows and engaging discussions.</p>
-              <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">August</div>
-              <p className="mt-3 text-xs text-white/70">Alumni, External, Internal SxC Jakarta</p>
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6">
+          {PROGRAMS.map((program) => (
+            <div key={program.badge} className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-xl bg-neutral-900 js-reveal">
+              <div className="absolute inset-0 bg-[url('/api/pics/logo.webp')] bg-cover bg-center opacity-35" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent" />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 rounded-md bg-blue-600 px-3 py-1 text-white text-sm font-semibold whitespace-nowrap">{program.badge}</div>
+              <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                <h4 className="text-lg font-semibold">{program.title}</h4>
+                <p className="mt-2 text-sm text-white/80">{program.description}</p>
+                <div className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-blue-600 text-white px-5 text-sm font-semibold">{program.month}</div>
+                <p className="mt-3 text-xs text-white/70">{program.audience}</p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </section>
+
+      {/* Partners Section */}
       <section className="relative z-20 w-full bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-screen-2xl px-6 sm:px-8">
           <div className="text-center js-reveal">
@@ -146,22 +186,9 @@ export default function Home() {
           </div>
           <div className="mt-8 relative overflow-hidden js-reveal">
             <div className="logo-marquee flex items-center gap-x-10">
-              <img src="/Company_1.png" alt="Company 1" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_2.png" alt="Company 2" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_3.png" alt="Company 3" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_4.png" alt="Company 4" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_5.jpg" alt="Company 5" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_6.png" alt="Company 6" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_7.png" alt="Company 7" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_8.png" alt="Company 8" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_1.png" alt="Company 1 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_2.png" alt="Company 2 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_3.png" alt="Company 3 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_4.png" alt="Company 4 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_5.jpg" alt="Company 5 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_6.png" alt="Company 6 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_7.png" alt="Company 7 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/Company_8.png" alt="Company 8 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
+              {[...COMPANY_LOGOS, ...COMPANY_LOGOS].map((logo, i) => (
+                <img key={i} src={logo.src} alt={logo.alt} className="h-10 sm:h-12 w-28 object-contain" />
+              ))}
             </div>
           </div>
           <div className="mt-10 flex justify-center js-reveal">
@@ -172,18 +199,9 @@ export default function Home() {
           </div>
           <div className="mt-8 relative overflow-hidden js-reveal">
             <div className="logo-marquee flex items-center gap-x-10">
-              <img src="/MC_1.webp" alt="Media & Community 1" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_2.png" alt="Media & Community 2" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_3.png" alt="Media & Community 3" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_4.jpeg" alt="Media & Community 4" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_5.png" alt="Media & Community 5" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_6.jpg" alt="Media & Community 6" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_1.webp" alt="Media & Community 1 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_2.png" alt="Media & Community 2 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_3.png" alt="Media & Community 3 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_4.jpeg" alt="Media & Community 4 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_5.png" alt="Media & Community 5 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
-              <img src="/MC_6.jpg" alt="Media & Community 6 duplicate" className="h-10 sm:h-12 w-28 object-contain" />
+              {[...MEDIA_LOGOS, ...MEDIA_LOGOS].map((logo, i) => (
+                <img key={i} src={logo.src} alt={logo.alt} className="h-10 sm:h-12 w-28 object-contain" />
+              ))}
             </div>
           </div>
           <div className="mt-6 flex justify-center js-reveal">
@@ -191,6 +209,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Latest News Section */}
       <section className="relative z-20 w-full bg-zinc-50 py-14 sm:py-20">
         <div className="mx-auto max-w-none px-6 sm:px-8 lg:px-12">
           <div className="text-center js-reveal">
@@ -200,73 +220,16 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900">Our Latest News</h2>
           </div>
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Holiday shopping 2025</h4>
-            </div>
-          </a>
-
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Growth in the age of AI</h4>
-            </div>
-          </a>
-
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Destination net zero 2025</h4>
-            </div>
-          </a>
-
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Accelerating human‑AI collaboration</h4>
-            </div>
-          </a>
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">AI and your operating model</h4>
-            </div>
-          </a>
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Sovereign AI: managing risk to growth</h4>
-            </div>
-          </a>
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Strengthen your cyber defenses</h4>
-            </div>
-          </a>
-          <a href="#" className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
-            <div className="absolute inset-0 bg-neutral-900" />
-            <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
-            <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
-              <span className="text-xs font-semibold tracking-wider text-white/80">RESEARCH REPORT</span>
-              <h4 className="mt-2 text-lg sm:text-xl font-semibold">Reimagining public services</h4>
-            </div>
-          </a>
+            {NEWS.map((item, i) => (
+              <a key={i} href={item.href} className="group relative h-[520px] sm:h-[640px] overflow-hidden rounded-lg js-reveal">
+                <div className="absolute inset-0 bg-neutral-900" />
+                <div className="absolute inset-0 bg-black/35 group-hover:bg-black/25 transition-colors" />
+                <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
+                  <span className="text-xs font-semibold tracking-wider text-white/80">{item.category}</span>
+                  <h4 className="mt-2 text-lg sm:text-xl font-semibold">{item.title}</h4>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>

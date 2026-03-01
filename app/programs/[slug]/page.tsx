@@ -29,20 +29,51 @@ export default async function ProgramDetail({ params }: { params: Promise<{ slug
   return (
     <main className="relative w-full bg-white text-zinc-900 overflow-hidden">
 
-      {/* Hero cover image */}
-      <section className="relative w-full h-[55vh] sm:h-[65vh] overflow-hidden">
-        <Image
-          src={item.cover}
-          alt={item.title}
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
-      </section>
+      {/* Hero section with 16:9 Aspect Ratio */}
+<section className="relative w-full aspect-video max-h-[75vh] overflow-hidden bg-white">
+  {/* Layer 1: Blurred background fill */}
+  <div className="absolute inset-0 z-0">
+    <Image
+      src={item.hero}
+      alt=""
+      fill
+      aria-hidden="true"
+      className="object-cover scale-110 blur-2xl opacity-50"
+    />
+  </div>
 
-      {/* Header block below the hero image */}
-      <section className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10 -mt-24 sm:-mt-32 pb-0">
+  {/* Layer 2: Sharp foreground image */}
+  <div className="relative h-full w-full flex items-center justify-center z-10 px-4">
+    <div className="relative h-full w-full max-w-5xl">
+      <Image
+        src={item.hero}
+        alt={item.title}
+        fill
+        priority
+        className="object-contain"
+      />
+    </div>
+  </div>
+
+  {/* Layer 3: Clean edge fades */}
+  {/* Bottom fade: Subtle transition to the white content section */}
+  <div 
+    className="absolute bottom-0 left-0 right-0 h-24 z-20 pointer-events-none"
+    style={{ background: "linear-gradient(to top, white 0%, rgba(255,255,255,0.6) 30%, transparent 100%)" }}
+  />
+  
+  {/* Side fades: Ensure the edges blend into the page body */}
+  <div 
+    className="absolute inset-y-0 left-0 w-12 z-20 pointer-events-none hidden sm:block"
+    style={{ background: "linear-gradient(to right, white, transparent)" }}
+  />
+  <div 
+    className="absolute inset-y-0 right-0 w-12 z-20 pointer-events-none hidden sm:block"
+    style={{ background: "linear-gradient(to left, white, transparent)" }}
+  />
+</section>
+      {/* Header block — cleanly on white, no overlap with the image */}
+      <section className="relative z-10 mx-auto max-w-5xl px-6 sm:px-10 pt-6 pb-0">
         {/* Back link */}
         <Link
           href="/programs"
@@ -196,19 +227,27 @@ export default async function ProgramDetail({ params }: { params: Promise<{ slug
                   href={`/programs/${rel.slug}`}
                   className="group relative h-[300px] overflow-hidden rounded-xl bg-zinc-200"
                 >
+                  {/* Blurred background fill for related cards */}
+                  <Image
+                    src={rel.cover}
+                    alt=""
+                    fill
+                    aria-hidden="true"
+                    className="object-cover scale-110 blur-lg opacity-60"
+                  />
                   {/* Cover image */}
                   <Image
                     src={rel.cover}
                     alt={rel.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-contain z-10 group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Gradient overlay for text legibility */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-20" />
                   {/* Blue accent line on hover */}
-                  <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 group-hover:w-full transition-all duration-500" />
+                  <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 group-hover:w-full transition-all duration-500 z-30" />
                   {/* Content */}
-                  <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                  <div className="absolute inset-0 p-5 flex flex-col justify-end z-30">
                     <span className="text-xs font-semibold tracking-widest text-blue-300 uppercase mb-2">
                       {rel.category}
                     </span>

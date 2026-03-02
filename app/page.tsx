@@ -10,13 +10,13 @@ import { PROGRAMS } from "../data/programs";
 // ============================================================
 
 const COMPANY_LOGOS = [
-  { src: "/Company_1.png", alt: "Company 1" },
-  { src: "/Company_2.png", alt: "Company 2" },
-  { src: "/Company_3.png", alt: "Company 3" },
-  { src: "/Company_4.png", alt: "Company 4" },
-  { src: "/Company_5.jpg", alt: "Company 5" },
-  { src: "/Company_6.png", alt: "Company 6" },
-  { src: "/Company_7.png", alt: "Company 7" },
+  { src: "/sponsor-danone.png", alt: "sponsor danone" },
+  { src: "/sponsor-microsoft.png", alt: "sponsor microsoft" },
+  { src: "/sponsor-bcg.png", alt: "sponsor bcg" },
+  { src: "/sponsor-p&g.png", alt: "sponsor p&g" },
+  { src: "/sponsor-unilever.jpg", alt: "sponsor unilever" },
+  { src: "/sponsor-traveloka.png", alt: "sponsor traveloka" },
+  { src: "/.png", alt: "Company 7" },
   { src: "/Company_8.png", alt: "Company 8" },
 ];
 

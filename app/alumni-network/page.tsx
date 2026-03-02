@@ -64,6 +64,66 @@ export default function AlumniNetworkPage() {
         </div>
       </section>
 
+      <section className="relative z-10 w-full bg-white border-t border-zinc-200 py-16 sm:py-20">
+        <div className="mx-auto max-w-[1400px] px-6 sm:px-10">
+          <div className="js-reveal">
+            <div className="flex items-center gap-4">
+              <div className="h-1 w-10 bg-blue-600" />
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900">The SxC Alumni Story</h2>
+            </div>
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="border border-zinc-200 bg-white p-6">
+                <h3 className="text-lg font-bold text-zinc-900">Origins</h3>
+                <p className="mt-3 text-zinc-600">
+                  What began as a bridge between ambitious students and seasoned executives became a community defined by rigor,
+                  mentorship, and shared ambition.
+                </p>
+              </div>
+              <div className="border border-zinc-200 bg-white p-6">
+                <h3 className="text-lg font-bold text-zinc-900">Momentum</h3>
+                <p className="mt-3 text-zinc-600">
+                  Cohorts learned from founders, operators, and coaches. Projects progressed from case rooms to real clients,
+                  turning frameworks into outcomes.
+                </p>
+              </div>
+              <div className="border border-zinc-200 bg-white p-6">
+                <h3 className="text-lg font-bold text-zinc-900">Legacy</h3>
+                <p className="mt-3 text-zinc-600">
+                  Alumni carry the SxC mindset into companies, ventures, and institutions—expanding the network&apos;s reach and reinforcing its culture.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 js-reveal">
+            <h3 className="text-xl sm:text-2xl font-serif font-bold leading-tight text-zinc-900">Milestones</h3>
+            <div className="mt-6 space-y-6">
+              <div className="flex items-start gap-4 border-l-2 border-zinc-200 pl-4">
+                <div className="mt-1 h-2 w-2 bg-blue-600" />
+                <div>
+                  <div className="font-semibold text-zinc-900">2019 — Community Deepening</div>
+                  <div className="text-zinc-600">Mentoring expanded; alumni circles formed across industries and functions.</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 border-l-2 border-zinc-200 pl-4">
+                <div className="mt-1 h-2 w-2 bg-blue-600" />
+                <div>
+                  <div className="font-semibold text-zinc-900">2023 — Practice to Impact</div>
+                  <div className="text-zinc-600">Live projects and competitions matured into client-facing outcomes.</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 border-l-2 border-zinc-200 pl-4">
+                <div className="mt-1 h-2 w-2 bg-blue-600" />
+                <div>
+                  <div className="font-semibold text-zinc-900">2025 — Network at Scale</div>
+                  <div className="text-zinc-600">Alumni chapters grew; collaboration now spans companies, cities, and disciplines.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="relative z-10 w-full bg-white py-16 sm:py-20">
         <div className="mx-auto max-w-[1400px] px-6 sm:px-10">
           <div className="flex items-center gap-4 js-reveal">
@@ -71,38 +131,83 @@ export default function AlumniNetworkPage() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-zinc-900">History by Year</h2>
           </div>
 
-          <div className="mt-10 space-y-12 sm:space-y-16">
-            {ALUMNI_HISTORY.map((batch) => (
-              <div key={batch.year} className="js-reveal">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 tracking-wide">
-                    Cohort {batch.year}
-                  </h3>
-                  <span className="text-sm font-semibold text-blue-600">
-                    {batch.people.length} alumni
-                  </span>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {batch.people.map((person) => (
-                    <div
-                      key={`${batch.year}-${person.name}`}
-                      className="rounded-xl border border-zinc-200 bg-white shadow-sm hover:shadow-md transition-shadow"
-                    >
-                      <div className="p-5 flex items-start gap-4">
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-blue-600 text-white font-bold">
-                          {person.name.split(" ").slice(0, 2).map((s) => s[0]).join("")}
-                        </div>
-                        <div className="flex-1">
-                          <div className="text-zinc-900 font-semibold">{person.name}</div>
-                          <div className="text-zinc-600 text-sm">{person.role}</div>
-                          <div className="text-zinc-500 text-sm">{person.org}</div>
+          <div className="mt-10 space-y-16">
+            {ALUMNI_HISTORY.map((batch, idx) => {
+              const imageCol = `lg:col-span-5 ${idx % 2 === 1 ? "lg:order-2" : ""}`;
+              const textCol = `lg:col-span-7 ${idx % 2 === 1 ? "lg:order-1" : ""}`;
+              const initials = batch.people[0]?.name
+                ? batch.people[0].name.split(" ").slice(0, 2).map((s) => s[0]).join("")
+                : "SXC";
+              return (
+                <div key={batch.year} className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-20 items-center js-reveal">
+                  <div className={imageCol}>
+                    <div className="aspect-[4/3] overflow-hidden relative border border-zinc-200 bg-blue-900/10">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-600/30 via-transparent to-transparent" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="h-20 w-20 sm:h-24 sm:w-24 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center text-blue-900 text-2xl font-bold">
+                          {initials}
                         </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className={textCol}>
+                    <div className="border border-zinc-200 bg-white p-6 sm:p-8">
+                      <span className="text-blue-600 font-bold tracking-widest uppercase text-xs sm:text-sm mb-3 block">
+                        {batch.people.length} Alumni
+                      </span>
+                      <h3 className="text-3xl sm:text-4xl font-serif font-bold leading-tight text-zinc-900">
+                        Cohort {batch.year}
+                      </h3>
+                      <p className="mt-4 text-zinc-600 text-base sm:text-lg">
+                        Highlights from this cohort include:
+                      </p>
+                      <ul className="mt-4 space-y-2 text-zinc-700">
+                        {batch.people.map((p) => (
+                          <li key={`${batch.year}-${p.name}`} className="flex items-start gap-3">
+                            <span className="mt-2 h-2 w-2 rounded-full bg-blue-600" />
+                            <span>
+                              <span className="font-semibold text-zinc-900">{p.name}</span>{" "}
+                              <span className="text-zinc-600">— {p.role}, {p.org}</span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
                 </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 w-full bg-zinc-50 border-t border-zinc-200 py-16 sm:py-20">
+        <div className="mx-auto max-w-[1200px] px-6 sm:px-10">
+          <div className="js-reveal">
+            <div className="flex items-center gap-4">
+              <div className="h-1 w-10 bg-blue-600" />
+              <h3 className="text-2xl font-extrabold text-zinc-900">Alumni Voices</h3>
+            </div>
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="border border-zinc-200 bg-white p-6">
+                <p className="text-zinc-700">
+                  “The discipline here translated directly into professional confidence.”
+                </p>
+                <div className="mt-3 text-sm text-zinc-500">Alya R.</div>
               </div>
-            ))}
+              <div className="border border-zinc-200 bg-white p-6">
+                <p className="text-zinc-700">
+                  “Mentors didn&apos;t just advise. They opened doors and raised the bar.”
+                </p>
+                <div className="mt-3 text-sm text-zinc-500">Jonathan L.</div>
+              </div>
+              <div className="border border-zinc-200 bg-white p-6">
+                <p className="text-zinc-700">
+                  “Community is the advantage—you keep growing alongside people who care.”
+                </p>
+                <div className="mt-3 text-sm text-zinc-500">Nadia K.</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

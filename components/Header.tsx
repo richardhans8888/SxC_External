@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
     dropdown: [
       { label: "Know About Us", href: "/about" },
       { label: "Our People", href: "/our-people" },
-      { label: "Alumni Network", href: "#alumni-network" },
+      { label: "Alumni Network", href: "/alumni-network" },
     ],
   },
   {
@@ -45,73 +45,73 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-black/10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <nav className="mx-auto max-w-[1500px] px-4 sm:px-8">
-        <div className="flex h-16 sm:h-20 items-center justify-between">
-          <div className="flex items-center gap-12 xl:gap-20">
+    <header className="sticky Pltop-0 z-50 w-full border-b border-black/10 bg-white">
+      <nav className="mx-auto max-w-[1700px] px-6 sm:px-10">
+        <div className="h-16 sm:h-20 items-center flex justify-between lg:grid lg:grid-cols-3">
+          <div className="flex items-center justify-start">
             <Link href="/" className="group flex-shrink-0">
               <div className="leading-tight">
-                <div className="text-base sm:text-lg font-bold tracking-[0.28em] text-black">
+                <div className="text-lg sm:text-xl font-bold tracking-[0.28em] text-black">
                   <span className="tracking-[0.28em]">STUDENTS</span>
                   <span className="mx-1 text-[0.75em] font-semibold tracking-normal align-baseline">x</span>
                   <span className="tracking-[0.28em]">CEO</span>
                   <span className="text-[0.75em] font-semibold tracking-normal align-baseline">S</span>
                 </div>
-                <div className="text-xs sm:text-sm font-semibold tracking-wider text-blue-600">Jakarta</div>
+                <div className="text-sm sm:text-base font-semibold tracking-wider text-blue-600">Jakarta</div>
               </div>
             </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-lg font-bold text-zinc-900">
-              {navItems.map((item) => (
-                <div key={item.label} className="relative group">
-                  {item.dropdown ? (
-                    item.href ? (
-                      <div className="flex items-center">
-                        <Link href={item.href} className="transition-colors duration-300 ease-out hover:text-blue-600 py-2">
-                          {item.label}
-                        </Link>
-                        <button className="flex items-center justify-center p-1 transition-colors duration-300 ease-out hover:text-blue-600 cursor-pointer outline-none ml-0.5">
-                          <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </button>
-                      </div>
-                    ) : (
-                      <button className="flex items-center gap-1 transition-colors duration-300 ease-out hover:text-blue-600 cursor-pointer outline-none py-2">
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center justify-center gap-5 xl:gap-6 text-sm font-bold text-zinc-900">
+            {navItems.map((item) => (
+              <div key={item.label} className="relative group">
+                {item.dropdown ? (
+                  item.href ? (
+                    <div className="flex items-center">
+                      <Link href={item.href} className="transition-colors duration-300 ease-out hover:text-blue-600 py-2 uppercase whitespace-nowrap">
                         {item.label}
+                      </Link>
+                      <button className="flex items-center justify-center p-1 transition-colors duration-300 ease-out hover:text-blue-600 cursor-pointer outline-none ml-0.5">
                         <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                    )
-                  ) : (
-                    <a href={item.href} className="transition-colors duration-300 ease-out hover:text-blue-600 py-2 block">
-                      {item.label}
-                    </a>
-                  )}
-                  
-                  {item.dropdown && (
-                    <div className="absolute left-0 top-full pt-4 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform group-hover:translate-y-0 translate-y-4 z-50">
-                      <div className="backdrop-blur-xl bg-white/90 rounded-xl shadow-2xl border border-white/40 ring-1 ring-black/5 overflow-hidden p-1">
-                        {item.dropdown.map((subItem) => (
-                          <a
-                            key={subItem.label}
-                            href={subItem.href}
-                            className="block px-4 py-3 text-base font-semibold text-zinc-700 rounded-lg hover:bg-blue-50/80 hover:text-blue-600 transition-colors"
-                          >
-                            {subItem.label}
-                          </a>
-                        ))}
-                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
+                  ) : (
+                    <button className="flex items-center gap-1 transition-colors duration-300 ease-out hover:text-blue-600 cursor-pointer outline-none py-2 uppercase whitespace-nowrap">
+                      {item.label}
+                      <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  )
+                ) : (
+                  <a href={item.href} className="transition-colors duration-300 ease-out hover:text-blue-600 py-2 block uppercase whitespace-nowrap">
+                    {item.label}
+                  </a>
+                )}
+                
+                {item.dropdown && (
+                  <div className="absolute left-0 top-full pt-4 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out transform group-hover:translate-y-0 translate-y-4 z-50">
+                    <div className="backdrop-blur-xl bg-white/90 rounded-xl shadow-2xl border border-white/40 ring-1 ring-black/5 overflow-hidden p-1">
+                      {item.dropdown.map((subItem) => (
+                        <a
+                          key={subItem.label}
+                          href={subItem.href}
+                          className="block px-4 py-3 text-base font-semibold text-zinc-700 rounded-lg hover:bg-blue-50/80 hover:text-blue-600 transition-colors"
+                        >
+                          {subItem.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
 
-          <div className="flex items-center">
+          <div className="flex items-center justify-end">
             <button
               className="lg:hidden p-2 ml-2 text-zinc-700"
               aria-label="Open menu"
@@ -138,7 +138,7 @@ export default function Header() {
                     <div>
                       <button
                         onClick={() => toggleMobileExpand(item.label)}
-                        className="flex w-full items-center justify-between px-4 py-3 text-base font-medium text-zinc-800 hover:text-blue-600 hover:bg-zinc-50"
+                        className="flex w/full items-center justify-between px-4 py-3 text-sm font-medium text-zinc-800 hover:text-blue-600 hover:bg-zinc-50 uppercase whitespace-nowrap"
                       >
                         {item.label}
                         <svg
@@ -168,7 +168,7 @@ export default function Header() {
                   ) : (
                     <a
                       href={item.href}
-                      className="block px-4 py-3 text-base font-medium text-zinc-800 hover:text-blue-600 hover:bg-zinc-50"
+                      className="block px-4 py-3 text-sm font-medium text-zinc-800 hover:text-blue-600 hover:bg-zinc-50 uppercase whitespace-nowrap"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.label}

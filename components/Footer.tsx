@@ -29,7 +29,7 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-sm text-white/70">
               <li><Link href="/about" className="hover:text-blue-400 transition-colors">Know About Us</Link></li>
               <li><Link href="/our-people" className="hover:text-blue-400 transition-colors">Our People</Link></li>
-              <li><a href="#alumni-network" className="hover:text-blue-400 transition-colors">Alumni Network</a></li>
+              <li><Link href="/alumni-network" className="hover:text-blue-400 transition-colors">Alumni Network</Link></li>
             </ul>
           </div>
 

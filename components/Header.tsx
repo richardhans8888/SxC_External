@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
     dropdown: [
       { label: "Know About Us", href: "/about" },
       { label: "Our People", href: "/our-people" },
-      { label: "Alumni Network", href: "#alumni-network" },
+      { label: "Alumni Network", href: "/alumni-network" },
     ],
   },
   {

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type NavItem = {
   label: string;
@@ -39,25 +39,35 @@ const navItems: NavItem[] = [
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const [isShrunk, setIsShrunk] = useState(false);
 
   const toggleMobileExpand = (label: string) => {
     setMobileExpanded(mobileExpanded === label ? null : label);
   };
 
+  useEffect(() => {
+    const onScroll = () => {
+      setIsShrunk(window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-black/10 bg-white">
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full border-b border-black/10 bg-white ${isShrunk ? "shadow-sm" : ""}`}>
       <nav className="mx-auto max-w-[1700px] px-6 sm:px-10">
-        <div className="h-16 sm:h-20 items-center flex justify-between lg:grid lg:grid-cols-3">
+        <div className={`items-center flex justify-between lg:grid lg:grid-cols-3 ${isShrunk ? "h-12 sm:h-16" : "h-16 sm:h-20"} transition-[height] duration-200`}>
           <div className="flex items-center justify-start">
             <Link href="/" className="group flex-shrink-0">
               <div className="leading-tight">
-                <div className="text-lg sm:text-xl font-bold tracking-[0.28em] text-black">
+                <div className={`${isShrunk ? "text-base sm:text-lg" : "text-lg sm:text-xl"} font-bold tracking-[0.28em] text-black transition-[font-size] duration-200`}>
                   <span className="tracking-[0.28em]">STUDENTS</span>
                   <span className="mx-1 text-[0.75em] font-semibold tracking-normal align-baseline">x</span>
                   <span className="tracking-[0.28em]">CEO</span>
                   <span className="text-[0.75em] font-semibold tracking-normal align-baseline">S</span>
                 </div>
-                <div className="text-sm sm:text-base font-semibold tracking-wider text-blue-600">Jakarta</div>
+                <div className={`${isShrunk ? "text-xs sm:text-sm" : "text-sm sm:text-base"} font-semibold tracking-wider text-blue-600 transition-[font-size] duration-200`}>Jakarta</div>
               </div>
             </Link>
           </div>

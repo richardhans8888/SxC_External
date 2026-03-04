@@ -45,7 +45,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky Pltop-0 z-50 w-full border-b border-black/10 bg-white">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-black/10 bg-white">
       <nav className="mx-auto max-w-[1700px] px-6 sm:px-10">
         <div className="h-16 sm:h-20 items-center flex justify-between lg:grid lg:grid-cols-3">
           <div className="flex items-center justify-start">

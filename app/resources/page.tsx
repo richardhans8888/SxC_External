@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import { RESOURCES } from "@/data/resources-data";
 
 export const metadata: Metadata = {
   title: "Resources | StudentsxCEOs Jakarta",
@@ -10,34 +12,42 @@ export default function ResourcesPage() {
     <main className="min-h-screen bg-white text-zinc-900 font-sans">
       
       {/* 1. HERO SECTION */}
-      {/* Inspired by Image 1: Full-bleed image with headline overlay and bottom text banner */}
       <section className="relative h-[85vh] w-full overflow-hidden">
-        {/* Background Image Placeholder */}
-        <div className="absolute inset-0 bg-neutral-900">
-          <div className="absolute inset-0 bg-gradient-to-r from-neutral-800 to-neutral-700" />
-          {/* Real image would go here */}
-          <div className="absolute inset-0 flex items-center justify-center text-white/10 text-9xl font-bold select-none pointer-events-none">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 bg-neutral-900">
+         {/* Actual Image */}
+         <img 
+            src="/resources/Partnership.jpg" 
+            alt="Resources Hero"
+            className="absolute inset-0 w-full h-full object-cover opacity-60" 
+         />
+         
+         {/* Gradient Overlay (Kept for text readability) */}
+         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+         
+         {/* Large Background Text */}
+         <div className="absolute inset-0 flex items-center justify-center text-white/10 text-9xl font-bold select-none pointer-events-none">
             RESOURCES
-          </div>
-        </div>
+         </div>
+      </div>
 
-        {/* Headline Overlay */}
-        <div className="absolute top-1/3 left-0 w-full px-6 sm:px-12 max-w-[1400px] mx-auto">
-          <h1 className="text-6xl sm:text-7xl md:text-8xl font-serif text-white max-w-4xl leading-tight">
+      {/* Headline Overlay */}
+      <div className="absolute top-1/3 left-0 w-full px-6 sm:px-12 max-w-[1400px] mx-auto z-10">
+         <h1 className="text-6xl sm:text-7xl md:text-8xl font-serif text-white max-w-4xl leading-tight">
             Capturing<br />Leadership<br />Insights
-          </h1>
-        </div>
+         </h1>
+      </div>
 
-        {/* Bottom Banner */}
-        <div className="absolute bottom-16 sm:bottom-24 left-0 w-full">
-          <div className="px-6 sm:px-12 max-w-[1400px] mx-auto">
-             <div className="bg-blue-900/90 backdrop-blur-md p-8 sm:p-12 max-w-3xl border-l-4 border-white">
-                <p className="text-xl sm:text-2xl text-white font-light leading-relaxed">
+      {/* Bottom Banner */}
+      <div className="absolute bottom-16 sm:bottom-24 left-0 w-full z-10">
+         <div className="px-6 sm:px-12 max-w-[1400px] mx-auto">
+            <div className="bg-blue-900/90 backdrop-blur-md p-8 sm:p-12 max-w-3xl border-l-4 border-white">
+               <p className="text-xl sm:text-2xl text-white font-light leading-relaxed">
                   Our thinking reveals possibilities unimagined by others. Together, we move swiftly to empower the next generation of leaders.
-                </p>
-             </div>
-          </div>
-        </div>
+               </p>
+            </div>
+         </div>
+      </div>
       </section>
 
 
@@ -81,11 +91,13 @@ export default function ResourcesPage() {
       <section className="py-24 px-6 sm:px-12 max-w-[1400px] mx-auto border-t border-black/10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
            {/* Left Image */}
-           <div className="aspect-square bg-neutral-100 relative overflow-hidden">
-              <div className="absolute inset-0 bg-blue-100 transition-transform duration-700 hover:scale-105" />
-              <div className="absolute inset-0 flex items-center justify-center text-blue-300 font-bold tracking-widest">
-                 FEATURE VISUALIZATION
-              </div>
+           <div className="aspect-[16/10] bg-neutral-100 relative overflow-hidden">
+              <img 
+                  src="resources/leadership.jpeg" 
+                  alt="Feature Description"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+               />
+              
            </div>
 
            {/* Right Content */}
@@ -124,50 +136,55 @@ export default function ResourcesPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black/10 pt-12">
                {/* Card 1 */}
-               <div className="group cursor-pointer">
-                  <div className="aspect-[16/9] bg-white mb-6 overflow-hidden relative border border-black/5">
-                     <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
+               <Link href="/resources/blog-insights" className="contents">
+                  <div className="group cursor-pointer flex flex-col h-full">
+                     <div className="aspect-[16/9] bg-white mb-6 overflow-hidden relative border border-black/5">
+                        <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
+                     </div>
+                     <h3 className="text-2xl font-serif text-blue-900 mb-3">Blog / Insights</h3>
+                     <p className="text-zinc-600 mb-4 leading-relaxed">
+                        Deep dives into current industry trends, interview tips, and success stories from our alumni network.
+                     </p>
+                     <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
+                        Explore Insights <span>→</span>
+                     </span>
                   </div>
-                  <h3 className="text-2xl font-serif text-blue-900 mb-3">Blog / Insights</h3>
-                  <p className="text-zinc-600 mb-4 leading-relaxed">
-                     Deep dives into current industry trends, interview tips, and success stories from our alumni network.
-                  </p>
-                  <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                     Explore Insights <span>→</span>
-                  </span>
-               </div>
+               </Link>
 
                {/* Card 2 */}
-               <div className="group cursor-pointer border-l-0 md:border-l border-black/10 pl-0 md:pl-8">
-                  <div className="aspect-[16/9] bg-white mb-6 overflow-hidden relative border border-black/5">
-                     <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
+               <Link href="/resources/leadership-toolkit" className="contents">
+                  <div className="group cursor-pointer border-l-0 md:border-l border-black/10 pl-0 md:pl-8 flex flex-col h-full">
+                     <div className="aspect-[16/9] bg-white mb-6 overflow-hidden relative border border-black/5">
+                        <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
+                     </div>
+                     <h3 className="text-2xl font-serif text-blue-900 mb-3">Leadership Toolkit</h3>
+                     <p className="text-zinc-600 mb-4 leading-relaxed">
+                        Practical templates, frameworks, and guides to help you lead teams and manage projects effectively.
+                     </p>
+                     <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
+                        Access Toolkit <span>→</span>
+                     </span>
                   </div>
-                  <h3 className="text-2xl font-serif text-blue-900 mb-3">Leadership Toolkit</h3>
-                  <p className="text-zinc-600 mb-4 leading-relaxed">
-                     Practical templates, frameworks, and guides to help you lead teams and manage projects effectively.
-                  </p>
-                  <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                     Access Toolkit <span>→</span>
-                  </span>
-               </div>
+               </Link>
 
                {/* Card 3 */}
-               <div className="group cursor-pointer border-l-0 md:border-l border-black/10 pl-0 md:pl-8">
-                  <div className="aspect-[16/9] bg-white mb-6 overflow-hidden relative border border-black/5">
-                     <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
+               <Link href="/resources/career-resources" className="contents">
+                  <div className="group cursor-pointer border-l-0 md:border-l border-black/10 pl-0 md:pl-8 flex flex-col h-full">
+                     <div className="aspect-[16/9] bg-white mb-6 overflow-hidden relative border border-black/5">
+                        <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
+                     </div>
+                     <h3 className="text-2xl font-serif text-blue-900 mb-3">Career Resources</h3>
+                     <p className="text-zinc-600 mb-4 leading-relaxed">
+                        Curated job boards, resume reviews, and mock interview sessions with our partner companies.
+                     </p>
+                     <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
+                        View Resources <span>→</span>
+                     </span>
                   </div>
-                  <h3 className="text-2xl font-serif text-blue-900 mb-3">Career Resources</h3>
-                  <p className="text-zinc-600 mb-4 leading-relaxed">
-                     Curated job boards, resume reviews, and mock interview sessions with our partner companies.
-                  </p>
-                  <span className="text-blue-600 font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                     View Resources <span>→</span>
-                  </span>
-               </div>
+               </Link>
             </div>
          </div>
       </section>
-
 
       {/* 5. COMPETITIVE ADVANTAGE (Dark Section) */}
       {/* Inspired by Image 5: Dark blue background with 3 columns */}
@@ -175,11 +192,13 @@ export default function ResourcesPage() {
          <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-20">
                <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-blue-900/50 relative overflow-hidden">
+                  <div className="aspect-[16/9] bg-blue-900/50 relative overflow-hidden">
                      {/* Image placeholder */}
-                     <div className="absolute inset-0 flex items-center justify-center text-blue-200/20 text-4xl font-serif">
-                        SXC
-                     </div>
+                     <img 
+                        src="/resources/Friendship.jpeg" 
+                        alt="Competitive Advantage"
+                        className="absolute inset-0 w-full h-full object-cover"
+                     />
                   </div>
                </div>
                <div className="lg:col-span-7 flex items-center">

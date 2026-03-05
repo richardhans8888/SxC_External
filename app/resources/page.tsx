@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { RESOURCES } from "@/data/resources-data";
+import { VALUES_DATA } from "@/data/values-data";
 
 export const metadata: Metadata = {
   title: "Resources | StudentsxCEOs Jakarta",
@@ -63,7 +65,7 @@ export default function ResourcesPage() {
              </div>
              <div className="sm:w-3/4 pl-0 sm:pl-8 border-l-0 sm:border-l border-black/10">
                 <h2 className="text-4xl sm:text-5xl font-serif text-blue-900 leading-tight">
-                  Drive knowledge to the world’s most impactful and compelling minds, leveraging our combination of talent, network, and global scale.
+                  Drive knowledge to the world's most impactful and compelling minds, leveraging our combination of talent, network, and global scale.
                 </h2>
              </div>
           </div>
@@ -110,7 +112,7 @@ export default function ResourcesPage() {
                     From student organizations to multinational corporations, changes in leadership dynamics play a key role in determining success. We asked: What if we could forecast those changes better than anyone else?
                  </p>
                  <p>
-                    Our Research strategy has assembled a team of analysts who understand and can predict signals generated from market trends. Working in tandem with industry experts, they’ve built a differentiated applied research operation.
+                    Our Research strategy has assembled a team of analysts who understand and can predict signals generated from market trends. Working in tandem with industry experts, they've built a differentiated applied research operation.
                  </p>
                  <p>
                     Today, they help transform data into actionable insights, communicating career-driven commercial opportunities and risks to our community.
@@ -134,6 +136,46 @@ export default function ResourcesPage() {
                </p>
             </div>
 
+            {/* Values cards from values-data.ts — 2 cols on md, 4 on xl */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 border-t border-black/10 pt-12 mb-20">
+              {VALUES_DATA.map((value, i) => (
+                <div
+                  key={value.index}
+                  className={`group flex flex-col h-full ${i > 0 ? "border-l-0 md:border-l border-black/10 pl-0 md:pl-8" : ""}`}
+                >
+                  {/* Image */}
+                  <div className="aspect-[16/9] bg-neutral-100 mb-6 overflow-hidden relative border border-black/5">
+                    <Image
+                      src={value.imageSrc}
+                      alt={value.imageAlt}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Index badge */}
+                    <div className="absolute top-3 left-3 h-7 w-7 rounded-full bg-white/90 flex items-center justify-center text-xs font-bold text-blue-900 shadow-sm z-10">
+                      {value.index}
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-serif text-blue-900 mb-3 leading-snug">
+                    {value.title.map((line, j) => (
+                      <span key={j}>
+                        {line}
+                        {j < value.title.length - 1 && <br />}
+                      </span>
+                    ))}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-zinc-600 leading-relaxed text-sm flex-1">
+                    {value.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Resource cards — Blog, Toolkit, Career */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-black/10 pt-12">
                {/* Card 1 */}
                <Link href="/resources/blog-insights" className="contents">
@@ -185,6 +227,7 @@ export default function ResourcesPage() {
             </div>
          </div>
       </section>
+
 
       {/* 5. COMPETITIVE ADVANTAGE (Dark Section) */}
       {/* Inspired by Image 5: Dark blue background with 3 columns */}

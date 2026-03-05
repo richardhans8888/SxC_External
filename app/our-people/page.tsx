@@ -13,7 +13,7 @@
 
 import { Metadata } from "next";
 import { PersonCard, BoardMemberCard } from "@/components/PersonCard";
-import { EXECUTIVES, MANAGEMENT, BOARD_MEMBERS } from "@/data/people-data";
+import { MANAGEMENT, BOARD_MEMBERS } from "@/data/people-data";
 
 export const metadata: Metadata = {
   title: "Our People | StudentsxCEOs Jakarta",
@@ -75,11 +75,35 @@ export default function OurPeoplePage() {
             Executive Board
           </h2>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
-            {EXECUTIVES.map((person, i) => (
-              <PersonCard key={i} {...person} />
-            ))}
-          </div>
+          {(() => {
+            const ph = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="100%25" height="100%25" fill="%23e5e7eb"/><text x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="Arial">Photo</text></svg>';
+            const EXEC_TOP = [
+              { name: "Andhika Pratama", role: "Controller", imageSrc: "/general-secretary-alisya.jpg", variant: "management" as const },
+              { name: "Nicholas Audric Adonis Mathew", role: "Chief Executive Officer", imageSrc: "/ceo-nicholas.jpg", variant: "management" as const },
+              { name: "Alisya Mutiara Arsyisi", role: "General Secretary", imageSrc: "/controller-andhika.jpg", variant: "management" as const },
+            ];
+            return (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-16">
+                {EXEC_TOP.map((p, i) => <PersonCard key={i} {...p} />)}
+              </div>
+            );
+          })()}
+
+          {(() => {
+            const ph = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><rect width="100%25" height="100%25" fill="%23e5e7eb"/><text x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" fill="%239ca3af" font-size="24" font-family="Arial">Photo</text></svg>';
+            const EXEC_BOTTOM = [
+              { name: "Ari Muhamad Juliansyah", role: "Chief Data & Technology Officer", imageSrc: "/cdto-ari.jpg", variant: "management" as const },
+              { name: "Rona Sasia Nabila Harahap", role: "Chief Human Resource Officer", imageSrc: "/chro-rona.jpg", variant: "management" as const },
+              { name: "Fazril Harun", role: "Chief Finance Officer", imageSrc: "/cfo-fazril.jpg", variant: "management" as const },
+              { name: "Darrell Damareka", role: "Chief Operating Officer", imageSrc: "/coo-darrel.jpg", variant: "management" as const },
+              { name: "Rasya Amalya Putri Purwanto", role: "Chief Marketing Officer", imageSrc: "/cmo-rasya.jpg", variant: "management" as const },
+            ];
+            return (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+                {EXEC_BOTTOM.map((p, i) => <PersonCard key={i} {...p} />)}
+              </div>
+            );
+          })()}
         </section>
 
         {/* ══════════════════════════════════════════

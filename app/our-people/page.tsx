@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   description: "Meet the Board of Executive, Board of Management, and Board Members of StudentsxCEOs Jakarta.",
 };
 
-// ── Reusable section label (same style as About page) ──────────
 function SectionLabel({ number, label }: { number: number; label: string }) {
   return (
     <div className="flex items-center gap-4 mb-6">

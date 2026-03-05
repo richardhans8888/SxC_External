@@ -2,6 +2,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { sponsors } from "@/data/sponsor";
+import { mediaPartners } from "@/data/mediapartners";
+import Image from "next/image";
 
 // ── Data ──────────────────────────────────────────────────────────
 // Replace placeholder arrays with real logo imports when ready
@@ -10,7 +13,7 @@ const MEDIA_PARTNERS     = Array.from({ length: 6  }, (_, i) => ({ id: i + 1, la
 const COMMUNITY_PARTNERS = Array.from({ length: 8  }, (_, i) => ({ id: i + 1, label: `Community ${i + 1}` }));
 
 // ── Logo card ─────────────────────────────────────────────────────
-function LogoCard({ label, size = "md" }: { label: string; size?: "lg" | "md" | "sm" }) {
+function LogoCard({ label, size = "md", image, }: { label: string; size?: "lg" | "md" | "sm"; image: string;}) {
   const pad = size === "lg" ? "p-8" : size === "md" ? "p-6" : "p-5";
   return (
     <div className={`group relative aspect-[3/2] bg-white border border-zinc-100 ${pad} flex items-center justify-center overflow-hidden transition-all duration-500 hover:border-blue-600 hover:shadow-[0_0_0_1px_#2563eb]`}>
@@ -18,6 +21,12 @@ function LogoCard({ label, size = "md" }: { label: string; size?: "lg" | "md" | 
       <div className="absolute inset-0 bg-blue-600 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500" />
       {/* Logo placeholder — swap with <Image> */}
       <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <Image
+          src={image}
+          alt="partners"
+          fill
+          className="object-contain"
+        />
         <span className="text-zinc-300 group-hover:text-white text-xs font-black tracking-widest uppercase transition-colors duration-300">
           {label}
         </span>
@@ -130,9 +139,10 @@ export default function PartnersPage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <SectionDivider number="01" label="Corporate Partners" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0 border border-zinc-100">
-            {CORPORATE_PARTNERS.map((p) => (
-              <div key={p.id} className="border-r border-b border-zinc-100 last:border-r-0">
-                <LogoCard label={p.label} size="lg" />
+            {sponsors.map((sponsor) => (
+              <div key={sponsor.id} className="border-r border-b border-zinc-100 last:border-r-0">
+                <LogoCard label={sponsor.name} image={sponsor.image} size="lg" />
+
               </div>
             ))}
           </div>
@@ -156,13 +166,13 @@ export default function PartnersPage() {
 
           {/* Larger cards for media — showcase */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-0 border border-white/10">
-            {MEDIA_PARTNERS.map((p) => (
-              <div key={p.id} className="border-r border-b border-white/10 last:border-r-0">
+            {mediaPartners.map((media) => (
+              <div key={media.id} className="border-r border-b border-white/10 last:border-r-0">
                 {/* Dark-themed logo card */}
                 <div className="group relative aspect-[3/2] bg-transparent p-6 flex items-center justify-center overflow-hidden transition-all duration-500 hover:bg-blue-600/10 border-0">
                   <div className="absolute inset-0 bg-blue-600 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 opacity-80" />
                   <span className="relative z-10 text-zinc-600 group-hover:text-white text-xs font-black tracking-widest uppercase transition-colors duration-300">
-                    {p.label}
+                    <LogoCard label={media.name} image={media.image} size="md" />
                   </span>
                   <div className="absolute top-0 left-0 w-0 h-[2px] bg-blue-400 group-hover:w-full transition-all duration-500" />
                 </div>
@@ -182,9 +192,9 @@ export default function PartnersPage() {
         <div className="max-w-[1400px] mx-auto relative z-10">
           <SectionDivider number="03" label="Community Partners" />
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-0 border border-zinc-200">
-            {COMMUNITY_PARTNERS.map((p) => (
-              <div key={p.id} className="border-r border-b border-zinc-200 last:border-r-0">
-                <LogoCard label={p.label} size="md" />
+            {mediaPartners.map((media) => (
+              <div key={media.id} className="border-r border-b border-zinc-200 last:border-r-0">
+                <LogoCard label={media.name} image={media.image} size="md" />
               </div>
             ))}
           </div>

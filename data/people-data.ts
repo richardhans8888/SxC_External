@@ -1,37 +1,26 @@
 // people-data.ts — Centralized data for Our People page
 // OOP pattern: add/remove people here only. No JSX changes needed.
-import { StaticImageData } from "next/image";
-import { PersonCardProps, BoardMemberProps } from "@/components/PersonCard";
 
-// ── Image imports ──────────────────────────────────────────────
-// Import your actual images here, e.g:
-// import johnDoeImg from "@/images/people/john-doe.jpg";
-// Then replace the placeholder strings below with the imported variable.
+import { PersonCardProps, BoardMemberProps } from "@/components/PersonCard";
 
 // ── Board of Executive ─────────────────────────────────────────
 export const EXECUTIVES: PersonCardProps[] = [
   {
-    name: "Name Surname",
-    role: "President",
-    imageSrc: "/images/people/exec-1.jpg",
+    name: "Nicholas Audric Adonis Mathew",
+    role: "Chief Executive Officer",
+    imageSrc: "/images/boards/ceo-nicholas.jpg",
     variant: "executive",
   },
   {
-    name: "Name Surname",
-    role: "Vice President",
-    imageSrc: "/images/people/exec-2.jpg",
+    name: "Alisya Mutiara Arsyisi",
+    role: "General Secretary",
+    imageSrc: "/images/boards/general-secretary-alisya.jpg",
     variant: "executive",
   },
   {
-    name: "Name Surname",
-    role: "Secretary General",
-    imageSrc: "/images/people/exec-3.jpg",
-    variant: "executive",
-  },
-  {
-    name: "Name Surname",
-    role: "Treasurer",
-    imageSrc: "/images/people/exec-4.jpg",
+    name: "Andhika Pratama",
+    role: "Controller",
+    imageSrc: "/images/boards/controller-andhika.jpg",
     variant: "executive",
   },
 ];
@@ -39,63 +28,380 @@ export const EXECUTIVES: PersonCardProps[] = [
 // ── Board of Management ────────────────────────────────────────
 export const MANAGEMENT: PersonCardProps[] = [
   {
-    name: "Name Surname",
-    role: "Global Head of Marketing",
-    imageSrc: "/images/people/mgmt-1.jpg",
+    name: "Richard Hans",
+    role: "Manager of Technology Development",
+    imageSrc: "/boards/dnt-mgr-td-richard.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Events",
-    imageSrc: "/images/people/mgmt-2.jpg",
+    name: "Hasna Choirunnisa",
+    role: "Manager of Analytics & Research",
+    imageSrc: "/boards/dnt-mgr-anr-hasna.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Partnerships",
-    imageSrc: "/images/people/mgmt-3.jpg",
+    name: "Fatimah Janahtun Azzahra",
+    role: "Manager of Operation",
+    imageSrc: "/boards/ops-mgr-fatimah.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Technology",
-    imageSrc: "/images/people/mgmt-4.jpg",
+    name: "Dhia Najma Shafa Jinan",
+    role: "Manager of Operation",
+    imageSrc: "/boards/ops-mgr-dhia.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Content",
-    imageSrc: "/images/people/mgmt-5.jpg",
+    name: "Rendy Putra Bastanta Sitepu",
+    role: "Manager of Operation",
+    imageSrc: "/boards/ops-mgr-rendy.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Community",
-    imageSrc: "/images/people/mgmt-6.jpg",
+    name: "Aqila Syakirah",
+    role: "Manager of Social Media Strategy",
+    imageSrc: "/boards/mkt-mgr-sms-aqila.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Finance",
-    imageSrc: "/images/people/mgmt-7.jpg",
+    name: "Refaya Luvi Azizy",
+    role: "Manager of External Affairs",
+    imageSrc: "/boards/mkt-mgr-ea-refaya.jpg",
     variant: "management",
   },
   {
-    name: "Name Surname",
-    role: "Global Head of Operations",
-    imageSrc: "/images/people/mgmt-8.jpg",
+    name: "Salma Haaniyah El Aliyyah",
+    role: "Manager of Creative & Visual Design",
+    imageSrc: "/boards/mkt-mgr-cvd-salma.jpg",
+    variant: "management",
+  },
+  {
+    name: "Alexandra Victoria Gunawan",
+    role: "Manager of Talent Management",
+    imageSrc: "/boards/hr-mgr-tm-alexandra.jpg",
+    variant: "management",
+  },
+  {
+    name: "Mochammad Daffa Rallibi",
+    role: "Manager of Learning & Development",
+    imageSrc: "/boards/hr-mgr-lnd-daffa.jpg",
+    variant: "management",
+  },
+  {
+    name: "Nursyafina Apriliani Syukri",
+    role: "Manager of Employer Branding",
+    imageSrc: "/boards/hr-mgr-eb-nursyafina.jpg",
+    variant: "management",
+  },
+  {
+    name: "Muhammad Dzulfiqar Dhiaulhaq",
+    role: "Manager of Corporate Partnership",
+    imageSrc: "/boards/fin-mgr-cp-dzulfiqar.jpg",
+    variant: "management",
+  },
+  {
+    name: "Trisha Nadhirah",
+    role: "Manager of Business & Finance",
+    imageSrc: "/boards/fin-mgr-bu-trisha.jpg",
     variant: "management",
   },
 ];
 
-// ── Board Members (text only) ──────────────────────────────────
+// ── Board Members (optional section if needed) ─────────────────
 export const BOARD_MEMBERS: BoardMemberProps[] = [
-  { name: "Board Member Name", title: "Chairman & CEO", company: "Company Name" },
-  { name: "Board Member Name", title: "Managing Director", company: "Company Name" },
-  { name: "Board Member Name", title: "Founder & CEO", company: "Company Name" },
-  { name: "Board Member Name", title: "Chief Strategy Officer", company: "Company Name" },
-  { name: "Board Member Name", title: "Partner", company: "Company Name" },
-  { name: "Board Member Name", title: "Director", company: "Company Name" },
-  { name: "Board Member Name", title: "Co-Founder", company: "Company Name" },
-  { name: "Board Member Name", title: "President Director", company: "Company Name" },
+  {
+    name: "Kenny Tang",
+    role: "Technology Development",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Dyah Zhafira Wibowo",
+    role: "Technology Development",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Nezzaluna Azzahra",
+    role: "Technology Development",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Lyonel Judson",
+    role: "Technology Development",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Stefan Luciano",
+    role: "Technology Development",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Timothy Immanuel",
+    role: "Technology Development",
+    variant: "Data and Technology",
+  },
+
+  // Analytics & Research
+  {
+    name: "Ashley Meliora",
+    role: "Analytics & Research",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Khalisha Zhurifah Sejati",
+    role: "Analytics & Research",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Nadine Keysha Joly Nugroho",
+    role: "Analytics & Research",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Fauzan Rizky Ramadhan",
+    role: "Analytics & Research",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Sabrina Purwasantiana",
+    role: "Analytics & Research",
+    variant: "Data and Technology",
+  },
+  {
+    name: "Valsyahira Norayansha",
+    role: "Analytics & Research",
+    variant: "Data and Technology",
+  },
+
+  // Talent Management
+  {
+    name: "Hanif Muflih",
+    role: "Talent Management",
+    variant: "Human Resources",
+  },
+  {
+    name: "Muh. Fathihah Fachry Amal",
+    role: "Talent Management",
+    variant: "Human Resources",
+  },
+  {
+    name: "Allea Nurra Kirania",
+    role: "Talent Management",
+    variant: "Human Resources",
+  },
+  {
+    name: "Nahran Aziza Aulia",
+    role: "Talent Management",
+    variant: "Human Resources",
+  },
+  {
+    name: "Thara Nadda Ariezta",
+    role: "Talent Management",
+    variant: "Human Resources",
+  },
+
+  // Learning & Development
+  {
+    name: "Siti Rodiatul Ilaiah",
+    role: "Learning & Development",
+    variant: "Human Resources",
+  },
+  {
+    name: "Darmanto",
+    role: "Learning & Development",
+    variant: "Human Resources",
+  },
+  {
+    name: "Naurah Arista Putri",
+    role: "Learning & Development",
+    variant: "Human Resources",
+  },
+
+  // Employer Branding
+  {
+    name: "Ammara Dyra Nafisa – Ammara",
+    role: "Employer Branding",
+    variant: "Human Resources",
+  },
+  {
+    name: "Paramadita Adnan",
+    role: "Employer Branding",
+    variant: "Human Resources",
+  },
+  {
+    name: "Mardiana Suhrul Romdoni – Dian",
+    role: "Employer Branding",
+    variant: "Human Resources",
+  },
+
+  // Corporate Partnership
+  {
+    name: "I Putu Adi Ardana Yasa",
+    role: "Corporate Partnership",
+    variant: "Finance",
+  },
+  {
+    name: "Salsabila Siahaan",
+    role: "Corporate Partnership",
+    variant: "Finance",
+  },
+  {
+    name: "Jessica Clarice Wong",
+    role: "Corporate Partnership",
+    variant: "Finance",
+  },
+  {
+    name: "Josephine Christy Then",
+    role: "Corporate Partnership",
+    variant: "Finance",
+  },
+
+  // Business Unit
+  {
+    name: "Marcel Antoni",
+    role: "Business Unit",
+    variant: "Finance",
+  },
+  {
+    name: "Izabel Fathia Rafindria Saanin",
+    role: "Business Unit",
+    variant: "Finance",
+  },
+  {
+    name: "Alya Noor Fathiah",
+    role: "Business Unit",
+    variant: "Finance",
+  },
+  {
+    name: "Bagas Mardiansyah Sundawa",
+    role: "Business Unit",
+    variant: "Finance",
+  },
+
+  // Creative
+  {
+    name: "Rizqi Suryo",
+    role: "Creative",
+    variant: "Marketing",
+  },
+  {
+    name: "Ananda Rahmania",
+    role: "Creative",
+    variant: "Marketing",
+  },
+  {
+    name: "Chesa Arwendhita Alifia",
+    role: "Creative",
+    variant: "Marketing",
+  },
+  {
+    name: "Sakurako Caya Katya Kato",
+    role: "Creative",
+    variant: "Marketing",
+  },
+  {
+    name: "Mutya Syafitri",
+    role: "Creative",
+    variant: "Marketing",
+  },
+  {
+    name: "Tesalonika Putri Christvia",
+    role: "Creative",
+    variant: "Marketing",
+  },
+
+  // Social Media Specialist
+  {
+    name: "Keysha Khairunnisa",
+    role: "Social Media Specialist",
+    variant: "Marketing",
+  },
+  {
+    name: "Luthfi Aqil Saputra",
+    role: "Social Media Specialist",
+    variant: "Marketing",
+  },
+  {
+    name: "Zahra Khairunnisa",
+    role: "Social Media Specialist",
+    variant: "Marketing",
+  },
+  {
+    name: "Evan Rizfi Novanda",
+    role: "Social Media Specialist",
+    variant: "Marketing",
+  },
+
+  // External Affairs
+  {
+    name: "Adinda Naura Adhyaksari",
+    role: "External Affairs",
+    variant: "Marketing",
+  },
+  {
+    name: "Azemi Efan",
+    role: "External Affairs",
+    variant: "Marketing",
+  },
+  {
+    name: "Ilyasa",
+    role: "External Affairs",
+    variant: "Marketing",
+  },
+
+  // Operations
+  {
+    name: "Bulan Khayangan",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Elisabeth Michelle",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Mas Moreno Ivander Athala",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Novifrilita Karunia Suhardani",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Mohammad Sang Panglima Anas",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Naurazka Salsabila Aragani",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Kalya Salsabila Arizya",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Jesslein Felisha",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Sri Rahayu Lestari",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Anisya Syahwa Fitri",
+    role: "Operations",
+    variant: "Operations",
+  },
+  {
+    name: "Yesha Trixie",
+    role: "Operations",
+    variant: "Operations",
+  },
 ];

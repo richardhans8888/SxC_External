@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Events | StudentsxCEOs Jakarta",
@@ -7,47 +8,48 @@ export const metadata: Metadata = {
 
 // Mock data for events
 const featuredEvent = {
-  id: "featured-1",
-  category: "Flagship Event",
-  title: "The SxC Summit 2025: Future of Leadership",
-  date: "October 15, 2025",
-  location: "Grand Ballroom, Jakarta",
-  image: "/api/pics/events/summit.jpg", // Placeholder
-  description: "Join over 500 students and industry leaders for a day of transformative talks, networking, and innovation showcases.",
+  id: "onboarding-session",
+  category: "Workshops",
+  title: "StudentsxCEOs Jakarta Batch 14 Officially Kicks Off with Onboarding Session",
+  date: "February 15, 2026",
+  location: "StudentsxCEOs Jakarta",
+  image: "/news/onboarding-session/cover.jpeg",
+  description:"StudentsxCEOs Jakarta Batch 14 officially began with an onboarding session introducing new apprentices to the organization, its vision, and upcoming initiatives.",
 };
+
 
 const upcomingEvents = [
   {
     id: "evt-1",
-    category: "Workshop",
-    title: "Strategic Problem Solving with McKinsey Alumni",
-    date: "July 12, 2025",
-    location: "SxC Hub, South Jakarta",
-    image: "/api/pics/events/workshop.jpg",
+    category: "Workshops",
+    title: "StudentsxCEOs Jakarta Batch 14 Officially Kicks Off with Onboarding Session",
+    date: "February 15, 2026",
+    location: "Virtual (Zoom)",
+    image: "/news/onboarding-session/cover.jpeg",
   },
   {
     id: "evt-2",
-    category: "CEO Talks",
-    title: "Navigating the Tech Winter: Insights from Unicorn Founders",
-    date: "July 28, 2025",
+    category: "Workshops",
+    title: "Apprentices of SxC Jakarta Kick Off Leadership Initiative with Insightful Webina",
+    date: "February 8, 2026",
     location: "Virtual (Zoom)",
-    image: "/api/pics/events/ceo-talk.jpg",
+    image: "/news/leadership-initiative/cover.jpeg",
   },
   {
     id: "evt-3",
-    category: "Networking",
-    title: "SxC Alumni Night: Building Bridges",
-    date: "August 05, 2025",
-    location: "Rooftop Bar, Central Jakarta",
-    image: "/api/pics/events/alumni.jpg",
+    category: "Workshops",
+    title: "SxC Jakarta Empowers Aspiring Entrepreneurs to Build Sustainable Ventures with Preneuries",
+    date: "February 7, 2026",
+    location: "Virtual (Zoom)",
+    image: "/news/preneuries/cover.jpeg",
   },
   {
     id: "evt-4",
-    category: "Case Competition",
-    title: "Jakarta Business Challenge 2025 Kick-off",
-    date: "August 20, 2025",
-    location: "University of Indonesia",
-    image: "/api/pics/events/competition.jpg",
+    category: "Workshops",
+    title: "SxC Jakarta Connects Students with Digital Industry Professionals Through SxDigital",
+    date: "February 7, 2026",
+    location: "Virtual (Zoom)",
+    image: "/news/sxdigital/cover.jpeg",
   },
 ];
 
@@ -69,7 +71,12 @@ export default function EventsPage() {
                  <div className="absolute inset-0 bg-neutral-200 transition-transform duration-700 group-hover:scale-105" />
                  {/* Placeholder */}
                  <div className="absolute inset-0 flex items-center justify-center text-neutral-400 text-sm tracking-widest uppercase">
-                   Featured Event Image
+                   <Image
+                    src={featuredEvent.image}
+                    alt={featuredEvent.title}
+                    fill
+                    className="object-contain"
+                  />
                  </div>
                </div>
             </div>
@@ -109,7 +116,12 @@ export default function EventsPage() {
               <div className="aspect-[3/2] bg-neutral-100 mb-6 overflow-hidden relative">
                 <div className="absolute inset-0 bg-neutral-200 transition-transform duration-700 group-hover:scale-105" />
                 <div className="absolute inset-0 flex items-center justify-center text-neutral-400 text-xs tracking-widest uppercase">
-                  Event Image
+                  <Image
+                    src={event.image}
+                    alt={event.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
               <div className="flex flex-col flex-grow">

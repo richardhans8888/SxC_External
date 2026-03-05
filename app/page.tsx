@@ -16,8 +16,8 @@ const COMPANY_LOGOS = [
   { src: "/sponsor-p&g.png", alt: "sponsor p&g" },
   { src: "/sponsor-unilever.jpg", alt: "sponsor unilever" },
   { src: "/sponsor-traveloka.png", alt: "sponsor traveloka" },
-  { src: "/.png", alt: "Company 7" },
-  { src: "/Company_8.png", alt: "Company 8" },
+  { src: "/sponsor-oliverwyman.png", alt: "sponsor oliverwyman" },
+  { src: "/sponsor-tiketcom.png", alt: "sponsor tiketcom" },
 ];
 
 const MEDIA_LOGOS = [

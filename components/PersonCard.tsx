@@ -56,21 +56,21 @@ export function PersonCard({
 // --- BOARD MEMBER (text-only variant, no image) ---
 export interface BoardMemberProps {
   name: string;
-  title: string;
-  company: string;
+  role: string;
+  variant: string;
 }
 
-export function BoardMemberCard({ name, title, company }: BoardMemberProps) {
+export function BoardMemberCard({ name, role, variant }: BoardMemberProps) {
   return (
     <div className="flex flex-col border-t-2 border-zinc-900 pt-5 group hover:border-blue-600 transition-colors duration-300">
       <h3 className="text-base font-bold text-zinc-900 leading-snug group-hover:text-blue-600 transition-colors duration-300">
         {name}
       </h3>
       <p className="text-sm text-zinc-500 mt-1 leading-snug">
-        {title}
+        {role}
       </p>
       <p className="text-xs text-zinc-400 mt-0.5 tracking-wide uppercase">
-        {company}
+        {variant}
       </p>
     </div>
   );

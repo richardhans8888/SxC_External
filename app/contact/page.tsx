@@ -35,7 +35,7 @@ export default function ContactPage() {
                   <h3 className="text-lg font-bold text-zinc-900 mb-1">Visit Us</h3>
                   <p className="text-zinc-600 leading-relaxed">
                     Jakarta, Indonesia<br />
-                    (Specific address placeholder)
+                    
                   </p>
                 </div>
               </div>
@@ -50,8 +50,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-bold text-zinc-900 mb-1">Email Us</h3>
                   <p className="text-zinc-600">
-                    info@studentsxceos.com<br />
-                    partnerships@studentsxceos.com
+                    marketing.studentsxceosjakarta@gmail.com
                   </p>
                 </div>
               </div>
@@ -66,9 +65,9 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-bold text-zinc-900 mb-1">Follow Us</h3>
                   <div className="flex gap-4 mt-2">
-                    <a href="#" className="text-zinc-400 hover:text-blue-600 transition-colors">Instagram</a>
-                    <a href="#" className="text-zinc-400 hover:text-blue-600 transition-colors">LinkedIn</a>
-                    <a href="#" className="text-zinc-400 hover:text-blue-600 transition-colors">TikTok</a>
+                    <a href="https://www.instagram.com/studentsxceosjkt" className="text-zinc-400 hover:text-blue-600 transition-colors">Instagram</a>
+                    <a href="https://www.linkedin.com/company/studentsxceos-jakarta/" className="text-zinc-400 hover:text-blue-600 transition-colors">LinkedIn</a>
+                    <a href="https://www.tiktok.com/@studentsxceosjkt" className="text-zinc-400 hover:text-blue-600 transition-colors">TikTok</a>
                   </div>
                 </div>
               </div>

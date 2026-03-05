@@ -1,67 +1,121 @@
+// app/our-people/page.tsx
+// ─────────────────────────────────────────────────────────────────
+// ARCHITECTURE (OOP-style thinking):
+//   PersonCard      → "class"  (photo card template)
+//   BoardMemberCard → "class"  (text-only card template)
+//   EXECUTIVES      → instances of PersonCard (executive variant)
+//   MANAGEMENT      → instances of PersonCard (management variant)
+//   BOARD_MEMBERS   → instances of BoardMemberCard
+//   OurPeoplePage   → "orchestrator" (renders all instances)
+//
+// To add/remove a person: edit people-data.ts only.
+// ─────────────────────────────────────────────────────────────────
+
 import { Metadata } from "next";
+import { PersonCard, BoardMemberCard } from "@/components/PersonCard";
+import { EXECUTIVES, MANAGEMENT, BOARD_MEMBERS } from "@/data/people-data";
 
 export const metadata: Metadata = {
   title: "Our People | StudentsxCEOs Jakarta",
-  description: "Meet the Board of Management and Board Members of StudentsxCEOs Jakarta.",
+  description: "Meet the Board of Executive, Board of Management, and Board Members of StudentsxCEOs Jakarta.",
 };
+
+// ── Reusable section label (same style as About page) ──────────
+function SectionLabel({ number, label }: { number: number; label: string }) {
+  return (
+    <div className="flex items-center gap-4 mb-6">
+      <span className="text-blue-600 font-bold text-xl">{number}</span>
+      <div className="h-[1px] w-12 bg-blue-600" />
+      <span className="text-blue-600 font-bold tracking-widest uppercase text-sm">
+        {label}
+      </span>
+    </div>
+  );
+}
 
 export default function OurPeoplePage() {
   return (
-    <main className="min-h-screen bg-white text-zinc-900 font-sans pt-32 pb-20">
-      <section className="px-6 sm:px-12 max-w-[1400px] mx-auto">
-        <h1 className="text-5xl sm:text-6xl font-serif mb-20 text-zinc-900">Our People</h1>
+    <main className="min-h-screen bg-white text-zinc-900 font-sans">
 
-        {/* Board of Executive */}
-        <div className="mb-24">
-          <h2 className="text-4xl sm:text-5xl font-serif mb-12 text-zinc-900">Board of Executive</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="flex flex-col group">
-                {/* Image Placement */}
-                <div className="aspect-[3/4] bg-neutral-100 mb-6 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
-                  {/* Placeholder text for visual debugging */}
-                  <div className="absolute inset-0 flex items-center justify-center text-neutral-400 text-sm">PHOTO</div>
-                </div>
-                <h3 className="text-lg font-bold text-zinc-900">Name Surname</h3>
-                <p className="text-sm text-zinc-600 mt-1">Executive Position</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Board of Management */}
-        <div className="mb-24">
-          <h2 className="text-4xl sm:text-5xl font-serif mb-12 text-zinc-900">Board of Management</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="flex flex-col group">
-                {/* Image Placement */}
-                <div className="aspect-[3/4] bg-neutral-100 mb-6 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-neutral-200 transition-transform duration-500 group-hover:scale-105" />
-                  {/* Placeholder text for visual debugging */}
-                  <div className="absolute inset-0 flex items-center justify-center text-neutral-400 text-sm">PHOTO</div>
-                </div>
-                <h3 className="text-lg font-bold text-zinc-900">Name Surname</h3>
-                <p className="text-sm text-zinc-600 mt-1">Global Head of Department</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Board Members */}
-        <div>
-          <h2 className="text-4xl sm:text-5xl font-serif mb-12 text-zinc-900">Board Members</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-              <div key={i} className="flex flex-col border-t border-black/10 pt-4">
-                <h3 className="text-lg font-bold text-zinc-900">Board Member Name</h3>
-                <p className="text-sm text-zinc-600 mt-1">Chairman & CEO, Company Name</p>
-              </div>
-            ))}
-          </div>
+      {/* ══════════════════════════════════════════
+          HERO — minimal dark banner, consistent with About
+          ══════════════════════════════════════════ */}
+      <section className="relative bg-[#0d0d0d] pt-40 pb-24 px-6 sm:px-12 overflow-hidden">
+        {/* Subtle diagonal texture */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              #fff 0px, #fff 1px,
+              transparent 1px, transparent 12px
+            )`,
+          }}
+        />
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <p className="text-blue-500 tracking-[0.4em] uppercase text-xs sm:text-sm font-semibold mb-4">
+            StudentsxCEOs Jakarta
+          </p>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white uppercase">
+            Our People
+          </h1>
+          <p className="mt-6 text-zinc-400 text-lg max-w-xl leading-relaxed">
+            The individuals who drive our mission — leaders, innovators, and changemakers shaping the future.
+          </p>
         </div>
       </section>
+
+      <div className="px-6 sm:px-12 max-w-[1400px] mx-auto">
+
+        {/* ══════════════════════════════════════════
+            1. BOARD OF EXECUTIVE
+            ══════════════════════════════════════════ */}
+        <section className="py-20 sm:py-28 border-b border-zinc-100">
+          <SectionLabel number={1} label="Board of Executive" />
+          <h2 className="text-3xl sm:text-5xl font-bold uppercase tracking-wide text-zinc-900 mb-16">
+            Executive Board
+          </h2>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+            {EXECUTIVES.map((person, i) => (
+              <PersonCard key={i} {...person} />
+            ))}
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════
+            2. BOARD OF MANAGEMENT
+            ══════════════════════════════════════════ */}
+        <section className="py-20 sm:py-28 border-b border-zinc-100">
+          <SectionLabel number={2} label="Board of Management" />
+          <h2 className="text-3xl sm:text-5xl font-bold uppercase tracking-wide text-zinc-900 mb-16">
+            Management Board
+          </h2>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+            {MANAGEMENT.map((person, i) => (
+              <PersonCard key={i} {...person} />
+            ))}
+          </div>
+        </section>
+
+        {/* ══════════════════════════════════════════
+            3. BOARD MEMBERS (text only)
+            ══════════════════════════════════════════ */}
+        <section className="py-20 sm:py-28">
+          <SectionLabel number={3} label="Board Members" />
+          <h2 className="text-3xl sm:text-5xl font-bold uppercase tracking-wide text-zinc-900 mb-16">
+            Advisory Board
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8">
+            {BOARD_MEMBERS.map((member, i) => (
+              <BoardMemberCard key={i} {...member} />
+            ))}
+          </div>
+        </section>
+
+      </div>
     </main>
   );
 }

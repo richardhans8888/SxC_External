@@ -1,104 +1,244 @@
-import { Metadata } from "next";
+// app/partners/page.tsx
+"use client";
 
-export const metadata: Metadata = {
-  title: "Partners | StudentsxCEOs Jakarta",
-  description: "Collaborate with us. See our corporate, media, and community partners.",
-};
+import { useEffect, useRef } from "react";
+
+// ── Data ──────────────────────────────────────────────────────────
+// Replace placeholder arrays with real logo imports when ready
+const CORPORATE_PARTNERS = Array.from({ length: 10 }, (_, i) => ({ id: i + 1, label: `Corp ${i + 1}` }));
+const MEDIA_PARTNERS     = Array.from({ length: 6  }, (_, i) => ({ id: i + 1, label: `Media ${i + 1}` }));
+const COMMUNITY_PARTNERS = Array.from({ length: 8  }, (_, i) => ({ id: i + 1, label: `Community ${i + 1}` }));
+
+// ── Logo card ─────────────────────────────────────────────────────
+function LogoCard({ label, size = "md" }: { label: string; size?: "lg" | "md" | "sm" }) {
+  const pad = size === "lg" ? "p-8" : size === "md" ? "p-6" : "p-5";
+  return (
+    <div className={`group relative aspect-[3/2] bg-white border border-zinc-100 ${pad} flex items-center justify-center overflow-hidden transition-all duration-500 hover:border-blue-600 hover:shadow-[0_0_0_1px_#2563eb]`}>
+      {/* Blue sweep on hover */}
+      <div className="absolute inset-0 bg-blue-600 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500" />
+      {/* Logo placeholder — swap with <Image> */}
+      <div className="relative z-10 w-full h-full flex items-center justify-center">
+        <span className="text-zinc-300 group-hover:text-white text-xs font-black tracking-widest uppercase transition-colors duration-300">
+          {label}
+        </span>
+      </div>
+      {/* Corner accent */}
+      <div className="absolute top-0 left-0 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-500" />
+    </div>
+  );
+}
+
+// ── Section divider label ─────────────────────────────────────────
+function SectionDivider({ number, label, light = false }: { number: string; label: string; light?: boolean }) {
+  return (
+    <div className={`flex items-center gap-5 mb-14 ${light ? "text-white" : "text-zinc-900"}`}>
+      <span className={`text-xs font-black tracking-[0.3em] uppercase ${light ? "text-blue-400" : "text-blue-600"}`}>{number}</span>
+      <div className={`h-[1px] w-10 ${light ? "bg-blue-400" : "bg-blue-600"}`} />
+      <h2 className={`text-2xl sm:text-3xl font-black uppercase tracking-tight ${light ? "text-white" : "text-zinc-900"}`}>{label}</h2>
+      <div className={`h-[1px] flex-grow ${light ? "bg-white/10" : "bg-zinc-100"}`} />
+    </div>
+  );
+}
 
 export default function PartnersPage() {
+  const ghostRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (ghostRef.current) {
+        ghostRef.current.style.transform = `translateY(calc(-50% + ${window.scrollY * 0.12}px))`;
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <main className="min-h-screen bg-white text-zinc-900 font-sans pt-32 pb-20">
-      <div className="mx-auto max-w-[1400px] px-6 sm:px-12">
-        
-        {/* Header Section */}
-        <div className="text-center max-w-4xl mx-auto mb-24">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif text-zinc-900 mb-8">
-            Our Partners
-          </h1>
-          <p className="text-xl text-zinc-600 leading-relaxed">
-            We collaborate with leading companies and organizations to provide the best opportunities for our community. Together, we bridge the gap between students and industry leaders.
+    <main className="min-h-screen font-sans overflow-x-hidden bg-white text-zinc-900">
+
+      {/* ══════════════════════════════════════════
+          HERO — full dark viewport
+          ══════════════════════════════════════════ */}
+      <section className="relative h-screen w-full bg-[#0d0d0d] flex flex-col justify-end pb-28 px-6 sm:px-16 overflow-hidden">
+        {/* Texture */}
+        <div className="absolute inset-0 opacity-[0.045]" style={{
+          backgroundImage: `repeating-linear-gradient(45deg,#fff 0px,#fff 1px,transparent 1px,transparent 14px)`
+        }} />
+
+        {/* Ghost text parallax */}
+        <span
+          ref={ghostRef}
+          className="absolute right-[-2vw] top-1/2 text-[22vw] font-black leading-none select-none pointer-events-none"
+          style={{ color: "rgba(255,255,255,0.028)", transition: "transform 0.05s linear" }}
+        >
+          SXC
+        </span>
+
+        {/* Blue left stripe */}
+        <div className="absolute top-0 left-0 w-[3px] h-full bg-blue-600" />
+
+        <div className="relative z-10 max-w-[1400px] mx-auto w-full">
+          <p className="text-blue-500 tracking-[0.5em] uppercase text-xs font-semibold mb-6">
+            StudentsxCEOs Jakarta
           </p>
+
+          <h1 className="text-[13vw] sm:text-[10vw] md:text-[8vw] font-black text-white uppercase leading-[0.88] tracking-tight mb-10">
+            Our<br />
+            <span className="text-transparent" style={{ WebkitTextStroke: "2px #2563eb" }}>
+              Partners.
+            </span>
+          </h1>
+
+          <div className="flex flex-col sm:flex-row sm:items-end gap-8 sm:gap-20">
+            <p className="text-zinc-400 text-lg max-w-md leading-relaxed">
+              We collaborate with leading companies and organisations to bridge the gap between students and industry leaders.
+            </p>
+            <div className="flex gap-8 text-white/35 text-xs tracking-widest uppercase font-semibold">
+              <a href="#corporate" className="hover:text-blue-400 transition-colors">01 — Corporate</a>
+              <a href="#media" className="hover:text-blue-400 transition-colors">02 — Media</a>
+              <a href="#community" className="hover:text-blue-400 transition-colors">03 — Community</a>
+            </div>
+          </div>
         </div>
 
-        {/* Corporate Partners */}
-        <section className="mb-24">
-          <div className="flex items-center gap-4 mb-12">
-             <h2 className="text-3xl sm:text-4xl font-serif text-blue-900">Corporate Partners</h2>
-             <div className="h-[1px] flex-grow bg-zinc-200" />
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
-             {/* Using placeholders for logos */}
-             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-                <div key={`corp-${i}`} className="aspect-[3/2] bg-neutral-50 flex items-center justify-center p-8 border border-zinc-100 grayscale hover:grayscale-0 transition-all duration-300 hover:shadow-lg rounded-lg group">
-                   <div className="w-full h-full bg-zinc-200 relative overflow-hidden rounded-md">
-                      {/* Logo Placeholder Visual */}
-                      <div className="absolute inset-0 flex items-center justify-center text-zinc-400 font-bold tracking-wider text-xs">
-                         LOGO {i}
-                      </div>
-                   </div>
-                </div>
-             ))}
-          </div>
-        </section>
+        {/* Scroll hint */}
+        <div className="absolute bottom-10 right-14 flex flex-col items-center gap-2 opacity-30">
+          <div className="w-[1px] h-14 bg-white animate-pulse" />
+          <span className="text-white text-[9px] tracking-[0.3em] uppercase" style={{ writingMode: "vertical-rl" }}>scroll</span>
+        </div>
 
-        {/* Media Partners */}
-        <section className="mb-24">
-          <div className="flex items-center gap-4 mb-12">
-             <h2 className="text-3xl sm:text-4xl font-serif text-blue-900">Media Partners</h2>
-             <div className="h-[1px] flex-grow bg-zinc-200" />
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8">
-             {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={`media-${i}`} className="aspect-[3/2] bg-neutral-50 flex items-center justify-center p-6 border border-zinc-100 grayscale hover:grayscale-0 transition-all duration-300 hover:shadow-md rounded-lg">
-                   <div className="w-full h-full bg-zinc-200 relative overflow-hidden rounded-md">
-                      <div className="absolute inset-0 flex items-center justify-center text-zinc-400 font-bold tracking-wider text-[10px]">
-                         MEDIA {i}
-                      </div>
-                   </div>
-                </div>
-             ))}
-          </div>
-        </section>
+        {/* Wave transition */}
+        <div className="absolute bottom-0 left-0 w-full z-20" style={{ height: "180px" }}>
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(to bottom, transparent 0%, rgba(13,13,13,0.7) 40%, #ffffff 100%)"
+          }} />
+          <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 80"
+            preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style={{ height: "80px" }}>
+            <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,10 1440,40 L1440,80 L0,80 Z" fill="#ffffff" />
+          </svg>
+        </div>
+      </section>
 
-        {/* Community Partners */}
-        <section className="mb-24">
-          <div className="flex items-center gap-4 mb-12">
-             <h2 className="text-3xl sm:text-4xl font-serif text-blue-900">Community Partners</h2>
-             <div className="h-[1px] flex-grow bg-zinc-200" />
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8">
-             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <div key={`comm-${i}`} className="aspect-[3/2] bg-neutral-50 flex items-center justify-center p-6 border border-zinc-100 grayscale hover:grayscale-0 transition-all duration-300 hover:shadow-md rounded-lg">
-                   <div className="w-full h-full bg-zinc-200 relative overflow-hidden rounded-md">
-                      <div className="absolute inset-0 flex items-center justify-center text-zinc-400 font-bold tracking-wider text-[10px]">
-                         COMMUNITY {i}
-                      </div>
-                   </div>
-                </div>
-             ))}
-          </div>
-        </section>
+      {/* ══════════════════════════════════════════
+          01 — CORPORATE PARTNERS
+          Full-width, generous grid
+          ══════════════════════════════════════════ */}
+      <section id="corporate" className="relative bg-white py-24 sm:py-32 px-6 sm:px-16" style={{ marginTop: "-2px" }}>
+        {/* Ghost number */}
+        <span className="absolute top-8 right-8 text-[15vw] font-black text-zinc-100 leading-none select-none pointer-events-none">01</span>
 
-        {/* CTA Section */}
-        <section className="bg-blue-900 rounded-2xl overflow-hidden relative">
-           <div className="absolute inset-0 bg-[url('/api/pics/pattern.png')] opacity-10" />
-           <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-800" />
-           
-           <div className="relative z-10 p-12 sm:p-20 text-center">
-              <h2 className="text-4xl sm:text-5xl font-serif text-white mb-6">Partner With Us</h2>
-              <p className="text-blue-100 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                 Interested in collaborating with StudentsxCEOs Jakarta? We are always open to new partnerships that bring value to our student community.
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <SectionDivider number="01" label="Corporate Partners" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0 border border-zinc-100">
+            {CORPORATE_PARTNERS.map((p) => (
+              <div key={p.id} className="border-r border-b border-zinc-100 last:border-r-0">
+                <LogoCard label={p.label} size="lg" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          02 — MEDIA PARTNERS
+          Dark band — visual contrast break
+          ══════════════════════════════════════════ */}
+      <section id="media" className="relative bg-[#0d0d0d] py-24 sm:py-32 px-6 sm:px-16 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]" style={{
+          backgroundImage: `repeating-linear-gradient(45deg,#fff 0px,#fff 1px,transparent 1px,transparent 14px)`
+        }} />
+        <span className="absolute top-8 right-8 text-[15vw] font-black leading-none select-none pointer-events-none" style={{ color: "rgba(255,255,255,0.03)" }}>02</span>
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-600" />
+        <div className="absolute bottom-0 left-0 w-full h-[3px] bg-blue-600" />
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <SectionDivider number="02" label="Media Partners" light />
+
+          {/* Larger cards for media — showcase */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-0 border border-white/10">
+            {MEDIA_PARTNERS.map((p) => (
+              <div key={p.id} className="border-r border-b border-white/10 last:border-r-0">
+                {/* Dark-themed logo card */}
+                <div className="group relative aspect-[3/2] bg-transparent p-6 flex items-center justify-center overflow-hidden transition-all duration-500 hover:bg-blue-600/10 border-0">
+                  <div className="absolute inset-0 bg-blue-600 scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-500 opacity-80" />
+                  <span className="relative z-10 text-zinc-600 group-hover:text-white text-xs font-black tracking-widest uppercase transition-colors duration-300">
+                    {p.label}
+                  </span>
+                  <div className="absolute top-0 left-0 w-0 h-[2px] bg-blue-400 group-hover:w-full transition-all duration-500" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          03 — COMMUNITY PARTNERS
+          Light section, staggered grid
+          ══════════════════════════════════════════ */}
+      <section id="community" className="relative bg-zinc-50 py-24 sm:py-32 px-6 sm:px-16 overflow-hidden">
+        <span className="absolute top-8 right-8 text-[15vw] font-black text-zinc-200 leading-none select-none pointer-events-none">03</span>
+
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          <SectionDivider number="03" label="Community Partners" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-0 border border-zinc-200">
+            {COMMUNITY_PARTNERS.map((p) => (
+              <div key={p.id} className="border-r border-b border-zinc-200 last:border-r-0">
+                <LogoCard label={p.label} size="md" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
+          CTA — full-bleed dark, no rounded corners
+          ══════════════════════════════════════════ */}
+      <section className="relative bg-[#0d0d0d] overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.045]" style={{
+          backgroundImage: `repeating-linear-gradient(45deg,#fff 0px,#fff 1px,transparent 1px,transparent 14px)`
+        }} />
+        {/* Blue glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-blue-600/10 blur-3xl rounded-full" />
+        <div className="absolute top-0 left-0 w-full h-[3px] bg-blue-600" />
+
+        {/* Ghost text */}
+        <span className="absolute left-0 bottom-0 text-[14vw] font-black leading-none select-none pointer-events-none translate-y-2" style={{ color: "rgba(255,255,255,0.025)" }}>
+          PARTNER
+        </span>
+
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-16 py-28 sm:py-36">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12">
+            <div>
+              <p className="text-blue-400 tracking-[0.4em] uppercase text-xs font-bold mb-6">Partner</p>
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase leading-[0.9] tracking-tight text-white mb-0">
+                Collaborate<br />
+                <span className="text-transparent" style={{ WebkitTextStroke: "2px #2563eb" }}>With Us.</span>
+              </h2>
+            </div>
+
+            <div className="max-w-lg">
+              <p className="text-zinc-300 text-lg leading-relaxed mb-10">
+                Interested in collaborating with StudentsxCEOs Jakarta? We are always open to new partnerships that bring real value to our student community and your organisation.
               </p>
-              <a href="/contact" className="inline-block bg-white text-blue-900 font-bold px-10 py-4 rounded-full hover:bg-blue-50 transition-colors">
-                 Become a Partner
-              </a>
-           </div>
-        </section>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="/contact"
+                  className="inline-flex items-center justify-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 transition-colors duration-300 uppercase text-sm tracking-wider">
+                  Become a Partner
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                <a href="/contact"
+                  className="inline-flex items-center justify-center gap-3 border border-white/20 hover:border-blue-600 text-white font-bold px-8 py-4 transition-colors duration-300 uppercase text-sm tracking-wider">
+                  Contact Us
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      </div>
     </main>
   );
 }

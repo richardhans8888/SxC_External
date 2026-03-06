@@ -48,7 +48,7 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold tracking-wider text-white/80">Get Involved</h4>
             <ul className="mt-3 space-y-2 text-sm text-white/70">
-              <li><Link href="/join-us" className="hover:text-blue-400 transition-colors">Join Us</Link></li>
+              <li><Link href="/join-us/community" className="hover:text-blue-400 transition-colors">Join Us</Link></li>
               <li><Link href="/contact" className="hover:text-blue-400 transition-colors">Contact</Link></li>
             </ul>
             <h4 className="mt-6 text-sm font-semibold tracking-wider text-white/80">Follow</h4>

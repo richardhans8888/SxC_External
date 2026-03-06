@@ -24,7 +24,7 @@ const navItems: NavItem[] = [
   { label: "Resources", href: "/resources" },
   {
     label: "Join Us",
-    href: "/join-us",
+    href: "/join-us/community",
     dropdown: [
       { label: "Community", href: "/join-us/community" },
       { label: "Volunteer", href: "/join-us/volunteer" },

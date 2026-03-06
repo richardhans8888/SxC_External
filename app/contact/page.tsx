@@ -65,9 +65,9 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-bold text-zinc-900 mb-1">Follow Us</h3>
                   <div className="flex gap-4 mt-2">
-                    <a href="https://www.instagram.com/studentsxceosjkt" className="text-zinc-400 hover:text-blue-600 transition-colors">Instagram</a>
-                    <a href="https://www.linkedin.com/company/studentsxceos-jakarta/" className="text-zinc-400 hover:text-blue-600 transition-colors">LinkedIn</a>
-                    <a href="https://www.tiktok.com/@studentsxceosjkt" className="text-zinc-400 hover:text-blue-600 transition-colors">TikTok</a>
+                    <a href="https://www.instagram.com/studentsxceosjkt" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-blue-600 transition-colors">Instagram</a>
+                    <a href="https://www.linkedin.com/company/studentsxceos-jakarta/" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-blue-600 transition-colors">LinkedIn</a>
+                    <a href="https://www.tiktok.com/@studentsxceosjkt" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-blue-600 transition-colors">TikTok</a>
                   </div>
                 </div>
               </div>

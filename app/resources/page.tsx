@@ -27,10 +27,6 @@ export default function ResourcesPage() {
          {/* Gradient Overlay (Kept for text readability) */}
          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
          
-         {/* Large Background Text */}
-         <div className="absolute inset-0 flex items-center justify-center text-white/10 text-9xl font-bold select-none pointer-events-none">
-            RESOURCES
-         </div>
       </div>
 
       {/* Headline Overlay */}

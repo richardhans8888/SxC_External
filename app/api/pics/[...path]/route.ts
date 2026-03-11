@@ -4,9 +4,10 @@ import { promises as fs } from "fs";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { path: string[] } }
+  context: { params: Promise<{ path: string[] }> }
 ) {
-  const rel = params.path.join("/");
+  const { path: segments } = await context.params;
+  const rel = segments.join("/");
   const safe = rel.replace(/\\/g, "/");
   const base = path.join(process.cwd(), "pics");
   const filePath = path.join(base, safe);

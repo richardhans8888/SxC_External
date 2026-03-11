@@ -1,11 +1,11 @@
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 import path from "path";
 import { promises as fs } from "fs";
 
 export async function GET(
   req: NextRequest,
   context: { params: Promise<{ path: string[] }> }
-) {
+): Promise<Response> {
   const { path: segments } = await context.params;
   const rel = segments.join("/");
   const safe = rel.replace(/\\/g, "/");

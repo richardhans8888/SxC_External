@@ -4,9 +4,14 @@ import { promises as fs } from "fs";
 
 export async function GET(
   req: NextRequest,
-  context: { params: Promise<{ path: string[] }> }
+  context: any
 ): Promise<Response> {
-  const { path: segments } = await context.params;
+  const maybeParams = context?.params;
+  const resolved = typeof maybeParams?.then === "function" ? await maybeParams : maybeParams;
+  const segments: string[] = Array.isArray(resolved?.path) ? resolved.path : [];
+  if (!segments.length) {
+    return new Response("Bad Request", { status: 400 });
+  }
   const rel = segments.join("/");
   const safe = rel.replace(/\\/g, "/");
   const base = path.join(process.cwd(), "pics");

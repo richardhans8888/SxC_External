@@ -1,7 +1,7 @@
 // app/join-us/community/page.tsx
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const OTHER_PAGES = [
@@ -11,6 +11,7 @@ const OTHER_PAGES = [
 
 export default function CommunityPage() {
   const ghostRef = useRef<HTMLSpanElement>(null);
+  const [showClosed, setShowClosed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -91,12 +92,21 @@ export default function CommunityPage() {
               ))}
             </div>
 
-            <a href="#" className="inline-flex items-center gap-4 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 transition-colors duration-300 uppercase text-sm tracking-wider">
+            <button
+              type="button"
+              onClick={() => setShowClosed(true)}
+              className="inline-flex items-center gap-4 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-4 transition-colors duration-300 uppercase text-sm tracking-wider"
+            >
               Apply Now
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
+            {showClosed && (
+              <p className="mt-4 text-sm font-bold tracking-widest uppercase text-red-500">
+                Currently Not Open
+              </p>
+            )}
           </div>
         </div>
 

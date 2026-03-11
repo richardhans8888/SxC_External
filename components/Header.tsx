@@ -24,7 +24,6 @@ const navItems: NavItem[] = [
   { label: "Resources", href: "/resources" },
   {
     label: "Join Us",
-    href: "/join-us/community",
     dropdown: [
       { label: "Community", href: "/join-us/community" },
       { label: "Volunteer", href: "/join-us/volunteer" },
@@ -79,10 +78,14 @@ export default function Header() {
               <div key={item.label} className="relative group">
                 {item.dropdown ? (
                   <div className="flex items-center">
-                    {item.href && (
+                    {item.href ? (
                       <Link href={item.href} className="transition-colors duration-300 ease-out hover:text-blue-600 py-2 uppercase whitespace-nowrap">
                         {item.label}
                       </Link>
+                    ) : (
+                      <span className="transition-colors duration-300 ease-out py-2 uppercase whitespace-nowrap cursor-default">
+                        {item.label}
+                      </span>
                     )}
                     <button className="flex items-center justify-center p-1 transition-colors duration-300 ease-out hover:text-blue-600 cursor-pointer outline-none ml-0.5">
                       <svg className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">

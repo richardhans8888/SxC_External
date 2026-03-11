@@ -13,8 +13,8 @@ const ROLES = [
   {
     num: "A",
     title: "Board of Management",
-    badge: "Annual",
-    color: "blue",
+    badge: "NOT OPEN",
+    color: "red",
     desc: "Lead strategic initiatives and manage core divisions. Drive the organisation's vision from the top.",
     cta: "Learn More",
     responsibilities: ["Strategic planning", "Division leadership", "Stakeholder management"],
@@ -22,8 +22,8 @@ const ROLES = [
   {
     num: "B",
     title: "Project Officers",
-    badge: "Rolling",
-    color: "green",
+    badge: "NOT OPEN",
+    color: "red",
     desc: "Own specific events and short-term projects end-to-end. Ideal for hands-on executors.",
     cta: "Apply Now",
     responsibilities: ["End-to-end event ownership", "Team coordination", "Budget management"],
@@ -31,8 +31,8 @@ const ROLES = [
   {
     num: "C",
     title: "Division Staff",
-    badge: "Seasonal",
-    color: "blue",
+    badge: "NOT OPEN",
+    color: "red",
     desc: "Embed within a division and develop deep domain expertise. Great for aspiring specialists.",
     cta: "Explore Roles",
     responsibilities: ["Division-specific work", "Skill development", "Mentored growth"],
@@ -113,7 +113,11 @@ export default function OpenRecruitmentPage() {
                 <div className="flex items-start justify-between">
                   <span className="text-6xl font-black text-white/8 leading-none">{num}</span>
                   <span className={`text-xs px-3 py-1 font-bold tracking-widest uppercase ${
-                    color === "green" ? "bg-green-500/10 text-green-400" : "bg-blue-500/10 text-blue-400"
+                    color === "green"
+                      ? "bg-green-500/10 text-green-400"
+                      : color === "red"
+                        ? "bg-red-500/10 text-red-400"
+                        : "bg-blue-500/10 text-blue-400"
                   }`}>{badge}</span>
                 </div>
 
